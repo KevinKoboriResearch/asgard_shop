@@ -1,6 +1,9 @@
 import 'dart:math' as math;
 
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_app/services/services.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -12,11 +15,17 @@ import 'widgets/navigation_bar.dart';
 class CatalogView extends StatelessWidget {
   const CatalogView({
     Key? key,
+    required this.presenter,
+    required this.pictureViewModelList,
   }) : super(key: key);
+
+  final PicturesPagePresenter presenter;
+  final List<PictureViewModel> pictureViewModelList;
 
   @override
   Widget build(BuildContext context) {
     return CatalogMobileLayout(
+      pictureViewModelList: pictureViewModelList,
       onViewProduct: (productId) {
         context.push('/detail/$productId');
       },
@@ -32,17 +41,20 @@ class CatalogView extends StatelessWidget {
 class CatalogMobileLayout extends StatelessWidget {
   const CatalogMobileLayout({
     Key? key,
+    required this.pictureViewModelList,
     required this.onViewProduct,
   }) : super(key: key);
 
+  final List<PictureViewModel> pictureViewModelList;
   final ValueChanged<String> onViewProduct;
 
   @override
   Widget build(BuildContext context) {
-    final products = context.select((CatalogState state) => state.products);
+    // final products = context.select((CatalogState state) => state.products);
     return AppScaffold(
       body: _BodyWithProducts(
-        products: products,
+        // products: products,
+        pictureViewModelList: pictureViewModelList,
         onViewProduct: onViewProduct,
       ),
       floatingBar: const CatalogNavigationBar(),
@@ -53,12 +65,12 @@ class CatalogMobileLayout extends StatelessWidget {
 class _BodyWithProducts extends StatefulWidget {
   const _BodyWithProducts({
     Key? key,
-    required this.products,
+    required this.pictureViewModelList,
     required this.onViewProduct,
   }) : super(key: key);
 
+  final List<PictureViewModel> pictureViewModelList;
   final ValueChanged<String> onViewProduct;
-  final List<Product> products;
 
   @override
   State<_BodyWithProducts> createState() => _BodyWithProductsState();
@@ -100,14 +112,17 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
               ),
               crossAxisCount: (constraints.maxWidth / 200).ceil(),
               children: [
-                ...widget.products.map(
-                  (product) => ProductTile(
-                    key: Key(product.id),
-                    name: product.name,
-                    image: NetworkImage(product.image),
-                    price: product.price.toDouble(),
-                    aspectRatio: product.imageAspectRatio,
-                    onTap: () => widget.onViewProduct(product.id),
+                ...widget.pictureViewModelList.map(
+                  (pictureViewModel) => ProductTile(
+                    key: Key(pictureViewModel.date), // .id
+                    name: pictureViewModel.title,
+                    image: 
+                    NetworkImage(pictureViewModel.url),
+                    // CachedNetworkImageProvider(pictureViewModel.url),
+                    // NetworkImage(product.image),
+                    price: pictureViewModel.explanation,
+                    aspectRatio: 1,//pictureViewModel.aspectRatio,
+                    onTap: () => widget.onViewProduct(pictureViewModel.date),
                   ),
                 ),
               ],

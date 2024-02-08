@@ -14,7 +14,7 @@ class ProductTile extends StatelessWidget {
   final String name;
   final double aspectRatio;
   final ImageProvider image;
-  final double price;
+  final String price;
   final VoidCallback onTap;
 
   @override
@@ -71,7 +71,7 @@ class ProductTileLayout extends StatelessWidget {
   final String name;
   final double aspectRatio;
   final ImageProvider image;
-  final double price;
+  final String price;
   final ProductTileState _state;
 
   @override

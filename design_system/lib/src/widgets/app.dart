@@ -9,7 +9,10 @@ import 'package:nasa_apod_design_system/src/widgets/buttons/button.dart';
 
 class AppBase extends StatelessWidget {
   const AppBase({
-    required this.routerDelegate, required this.routeInformationParser, required this.appLogo, Key? key,
+    required this.routerDelegate,
+    required this.routeInformationParser,
+    required this.appLogo,
+    Key? key,
     this.darkAppLogo,
     this.routeInformationProvider,
     this.backButtonDispatcher,

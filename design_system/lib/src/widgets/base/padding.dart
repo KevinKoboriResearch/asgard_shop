@@ -38,10 +38,10 @@ class AppEdgeInsets extends Equatable {
         bottom = AppGapSize.semiSmall;
 
   const AppEdgeInsets.regular()
-      : left = AppGapSize.regular,
-        top = AppGapSize.regular,
-        right = AppGapSize.regular,
-        bottom = AppGapSize.regular;
+      : left = AppGapSize.medium,
+        top = AppGapSize.medium,
+        right = AppGapSize.medium,
+        bottom = AppGapSize.medium;
 
   const AppEdgeInsets.semiBig()
       : left = AppGapSize.semiBig,
@@ -100,7 +100,7 @@ class AppPadding extends StatelessWidget {
   const AppPadding.regular({
     Key? key,
     this.child,
-  })  : padding = const AppEdgeInsets.all(AppGapSize.regular),
+  })  : padding = const AppEdgeInsets.all(AppGapSize.medium),
         super(key: key);
 
   const AppPadding.semiBig({

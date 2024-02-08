@@ -41,7 +41,7 @@ class AppNavigationBar extends StatelessWidget {
               ),
             ],
           ),
-        const AppGap.regular(),
+        const AppGap.medium(),
         if (action == null) body,
         if (action != null)
           Expanded(
@@ -65,7 +65,7 @@ class AppNavigationBar extends StatelessWidget {
               ],
             ),
           ),
-        const AppGap.regular(),
+        const AppGap.medium(),
         if (action == null) summary,
         if (action != null)
           Stack(
@@ -112,13 +112,13 @@ class AppNavigationBar extends StatelessWidget {
             ),
           ],
         ),
-        const AppGap.regular(),
+        const AppGap.medium(),
         if (canNavigateBack) Expanded(child: summary),
         if (!canNavigateBack)
           Expanded(
             child: body,
           ),
-        const AppGap.regular(),
+        const AppGap.medium(),
         if (!canNavigateBack) summary,
         if (canNavigateBack && action != null) action,
       ],

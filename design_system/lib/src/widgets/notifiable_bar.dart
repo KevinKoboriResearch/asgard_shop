@@ -21,7 +21,8 @@ class AppNotification extends Equatable {
 
 class AppNotifiableBar extends StatefulWidget {
   const AppNotifiableBar({
-    required this.child, Key? key,
+    required this.child,
+    Key? key,
     this.notification,
     this.onClosed,
   }) : super(key: key);
@@ -74,13 +75,16 @@ enum AppNotifiableBarState {
 
 class AppNotifiableBarLayout extends StatelessWidget {
   const AppNotifiableBarLayout.opened({
-    required this.notification, required this.child, Key? key,
+    required this.notification,
+    required this.child,
+    Key? key,
     this.onClosed,
   })  : _state = AppNotifiableBarState.opened,
         super(key: key);
 
   const AppNotifiableBarLayout.closed({
-    required this.child, Key? key,
+    required this.child,
+    Key? key,
     this.onClosed,
   })  : _state = AppNotifiableBarState.closed,
         notification = null,
@@ -134,7 +138,8 @@ class AppNotifiableBarLayout extends StatelessWidget {
 
 class _NotificationBody extends StatelessWidget {
   const _NotificationBody({
-    required this.notification, Key? key,
+    required this.notification,
+    Key? key,
     this.onClose,
   }) : super(key: key);
 
@@ -156,7 +161,7 @@ class _NotificationBody extends StatelessWidget {
         Expanded(
           child: AppPadding(
             padding: const AppEdgeInsets.symmetric(
-              vertical: AppGapSize.regular,
+              vertical: AppGapSize.medium,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,

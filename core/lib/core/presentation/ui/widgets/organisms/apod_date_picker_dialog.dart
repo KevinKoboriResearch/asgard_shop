@@ -2,10 +2,13 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 class ApodDatePickerDialog extends StatefulWidget
     implements PreferredSizeWidget {
-  final PicturesPagePresenter picturesPagePresenter;
+  // TODO: NOW - REMOVE THIS DEPENDECY, USE CALLBACK
+  // final PicturesPagePresenter picturesPagePresenter;
 
   const ApodDatePickerDialog(
-    this.picturesPagePresenter, {
+      // TODO: NOW - REMOVE THIS DEPENDECY, USE CALLBACK
+      // this.picturesPagePresenter,
+      {
     super.key,
   }) : preferredSize = const Size.fromHeight(kToolbarHeight);
 
@@ -70,8 +73,8 @@ class _ApodDatePickerDialogState extends State<ApodDatePickerDialog>
     if (newSelectedDate != null) {
       setState(() {
         _selectedDate.value = newSelectedDate;
-
-        widget.picturesPagePresenter.loadPictureByDate(_selectedDate.value);
+        // TODO: NOW - REMOVE THIS DEPENDECY, USE CALLBACK
+        // widget.picturesPagePresenter.loadPictureByDate(_selectedDate.value);
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
               'Selected: ${_selectedDate.value.day}/${_selectedDate.value.month}/${_selectedDate.value.year}'),

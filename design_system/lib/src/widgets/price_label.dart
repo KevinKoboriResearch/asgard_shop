@@ -8,7 +8,7 @@ class PriceLabel extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final double value;
+  final String value;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class PriceLabel extends StatelessWidget {
       ),
       padding: const AppEdgeInsets.symmetric(
         vertical: AppGapSize.semiSmall,
-        horizontal: AppGapSize.regular,
+        horizontal: AppGapSize.medium,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,

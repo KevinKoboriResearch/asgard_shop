@@ -7,6 +7,7 @@ import 'package:nasa_apod_app/features/catalog/state.dart';
 import 'package:nasa_apod_app/features/catalog/view.dart';
 import 'package:nasa_apod_app/features/notifications/state.dart';
 import 'package:nasa_apod_app/features/product_detail/view.dart';
+import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class App extends StatelessWidget {
@@ -17,9 +18,14 @@ class App extends StatelessWidget {
   final _router = GoRouter(
     routes: [
       GoRoute(
-        path: '/',
-        builder: (context, state) => const CatalogView(),
-      ),
+          path: '/',
+          builder: (context, state) => PicturesPage(
+                picturesPagePresenter: picturesPagePresenterFactory(),
+              )
+          // CatalogView(
+          //   presenter: picturesPresenterFactory(),
+          // ),
+          ),
       GoRoute(
         path: '/detail/:id',
         pageBuilder: (context, state) => TransparentPage<void>(
