@@ -27,6 +27,7 @@ class AppThemeData extends Equatable {
 
   factory AppThemeData.regular({
     required PictureProvider appLogo,
+    required PictureProvider appWarmLogo,
   }) =>
       AppThemeData(
         formFactor: AppFormFactor.medium,
@@ -39,6 +40,7 @@ class AppThemeData extends Equatable {
         durations: AppDurationsData.regular(),
         images: AppImagesData.regular(
           appLogo: appLogo,
+          appWarmLogo: appWarmLogo,
         ),
       );
 

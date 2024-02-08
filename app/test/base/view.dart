@@ -37,6 +37,10 @@ void testAppView(
                       SvgPicture.svgStringDecoderBuilder,
                       '<svg width="100" height="50"></svg>',
                     ),
+                    appWarmLogo: StringPicture(
+                      SvgPicture.svgStringDecoderBuilder,
+                      '<svg width="100" height="50"></svg>',
+                    ),
                     child: Directionality(
                       textDirection: TextDirection.ltr,
                       child: SizedBox(

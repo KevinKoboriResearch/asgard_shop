@@ -9,11 +9,13 @@ import 'package:nasa_apod_design_system/src/widgets/buttons/button.dart';
 
 class AppBase extends StatelessWidget {
   const AppBase({
+    Key? key,
     required this.routerDelegate,
     required this.routeInformationParser,
     required this.appLogo,
-    Key? key,
     this.darkAppLogo,
+    required this.appWarmLogo,
+    this.darkAppWarmLogo,
     this.routeInformationProvider,
     this.backButtonDispatcher,
     this.debugShowGrid = false,
@@ -63,6 +65,8 @@ class AppBase extends StatelessWidget {
   final TransitionBuilder? builder;
   final PictureProvider appLogo;
   final PictureProvider? darkAppLogo;
+  final PictureProvider appWarmLogo;
+  final PictureProvider? darkAppWarmLogo;
 
   // We provide material and cupertino localization delegate even it will
   // probably not be used.
@@ -98,6 +102,7 @@ class AppBase extends StatelessWidget {
   Widget _buildWidgetApp(BuildContext context) {
     Widget result = AppResponsiveTheme(
       appLogo: appLogo,
+      appWarmLogo: appWarmLogo,
       darkAppLogo: darkAppLogo,
       colorMode: colorMode,
       child: cupertino.Builder(builder: (context) {

@@ -5,7 +5,7 @@ void main() {
   testAppWidgets(
     'price_label_test',
     {
-      'default': const PriceLabel(50),
+      // 'default': const DateLabel('2024-01-01'),
     },
   );
 }

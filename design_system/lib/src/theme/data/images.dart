@@ -8,36 +8,48 @@ import 'package:flutter_svg/flutter_svg.dart';
 class AppImagesData extends Equatable {
   const AppImagesData({
     required this.appLogo,
+    required this.appWarmLogo,
     required this.backgroundPattern,
   });
 
-  factory AppImagesData.regular({required PictureProvider appLogo}) =>
+  factory AppImagesData.regular({
+    required PictureProvider appLogo,
+    required PictureProvider appWarmLogo,
+  }) =>
       AppImagesData(
         appLogo: appLogo,
+        appWarmLogo: appWarmLogo,
         backgroundPattern: const AssetImage(
           'assets/images/background_pattern.png',
           package: 'nasa_apod_design_system',
         ),
       );
 
-  factory AppImagesData.highContrast({required PictureProvider appLogo}) =>
+  factory AppImagesData.highContrast({
+    required PictureProvider appLogo,
+    required PictureProvider appWarmLogo,
+  }) =>
       AppImagesData(
         appLogo: appLogo,
+        appWarmLogo: appWarmLogo,
         backgroundPattern: MemoryImage(kTransparentImage),
       );
 
   final PictureProvider appLogo;
+  final PictureProvider appWarmLogo;
   final ImageProvider backgroundPattern;
 
   @override
   List<Object?> get props => [
         backgroundPattern.named('appLogo'),
+        backgroundPattern.named('appWarmLogo'),
         backgroundPattern.named('backgroundPattern'),
       ];
 
   AppImagesData withAppLogo(PictureProvider appLogo) {
     return AppImagesData(
       appLogo: appLogo,
+      appWarmLogo: appWarmLogo,
       backgroundPattern: backgroundPattern,
     );
   }
@@ -45,6 +57,7 @@ class AppImagesData extends Equatable {
   AppImagesData withBackgroundPattern(ImageProvider backgroundPattern) {
     return AppImagesData(
       appLogo: appLogo,
+      appWarmLogo: appWarmLogo,
       backgroundPattern: backgroundPattern,
     );
   }

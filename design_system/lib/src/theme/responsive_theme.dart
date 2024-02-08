@@ -19,8 +19,10 @@ class AppResponsiveTheme extends StatelessWidget {
   const AppResponsiveTheme({
     Key? key,
     required this.appLogo,
-    required this.child,
     this.darkAppLogo,
+    required this.child,
+    required this.appWarmLogo,
+    this.darkAppWarmLogo,
     this.colorMode,
     this.formFactor,
   }) : super(key: key);
@@ -30,6 +32,8 @@ class AppResponsiveTheme extends StatelessWidget {
   final Widget child;
   final PictureProvider appLogo;
   final PictureProvider? darkAppLogo;
+  final PictureProvider appWarmLogo;
+  final PictureProvider? darkAppWarmLogo;
 
   static AppThemeColorMode colorModeOf(BuildContext context) {
     final platformBrightness = MediaQuery.platformBrightnessOf(context);
@@ -57,7 +61,10 @@ class AppResponsiveTheme extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = AppThemeData.regular(appLogo: appLogo);
+    var theme = AppThemeData.regular(
+      appLogo: appLogo,
+      appWarmLogo: appWarmLogo,
+    );
 
     /// Updating the colors for the current brightness
     final colorMode = this.colorMode ?? colorModeOf(context);
@@ -73,7 +80,10 @@ class AppResponsiveTheme extends StatelessWidget {
       case AppThemeColorMode.highContrast:
         theme = theme.withColors(AppColorsData.highContrast());
         theme = theme.withImages(
-          AppImagesData.highContrast(appLogo: theme.images.appLogo),
+          AppImagesData.highContrast(
+            appLogo: theme.images.appLogo,
+            appWarmLogo: theme.images.appWarmLogo,
+          ),
         );
         break;
       case AppThemeColorMode.light:

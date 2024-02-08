@@ -1,13 +1,16 @@
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CatalogHeader extends StatelessWidget {
   const CatalogHeader({
-    Key? key,
+    super.key,
     required this.controller,
-  }) : super(key: key);
+    required this.image,
+  });
 
   final ScrollController controller;
+  final ImageProvider image;
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +23,31 @@ class CatalogHeader extends StatelessWidget {
           padding: EdgeInsets.all(
             theme.spacing.semiBig,
           ),
-          child: Container(
-            height: theme.typography.title1.fontSize! * 1.5,
-            alignment: Alignment.centerLeft,
-            child: SvgPicture(theme.images.appLogo),
-          ),
+          child: 
+          // Expanded(
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     crossAxisAlignment: CrossAxisAlignment.center,
+          //     children: [
+          //       Container(
+          //         height: theme.typography.title1.fontSize,
+          //         width: theme.typography.title1.fontSize! * 1.5,
+          //         alignment: Alignment.centerLeft,
+          //         child: SvgPicture(theme.images.appLogo),
+          //       ),
+          //       AppGap.medium(),
+                Container(
+                  // color: Colors.red,
+                  height: theme.typography.title1.fontSize,
+                  width: theme.typography.title1.fontSize! * 3,
+                  alignment: Alignment.centerLeft,
+                  child: SvgPicture(theme.images.appWarmLogo),
+                ),
+          //       AppGap.big(),
+          //       AppGap.semiBig(),
+          //     ],
+          //   ),
+          // ),
         ),
       ),
       builder: (context, child) {
@@ -36,9 +59,10 @@ class CatalogHeader extends StatelessWidget {
         return Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: theme.images.backgroundPattern,
+              image: image,
+              // image: theme.images.backgroundPattern,
               fit: BoxFit.cover,
-              opacity: 0.025 + 0.175 * scrollAmount,
+              opacity: 0.025 + 0.575 * scrollAmount,
             ),
           ),
           child: child,

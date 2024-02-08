@@ -11,26 +11,26 @@ void main() async {
           AppTileSliverGrid(
             children: [
               ProductTileLayout.idle(
-                name: 'Dog 1',
-                price: 300,
+                title: 'Dog 1',
+                date: '2024-01-01',
                 image: kDogImage,
                 aspectRatio: 1 / 1.5,
               ),
               ProductTileLayout.idle(
-                name: 'Dog 2',
-                price: 400,
+                title: 'Dog 2',
+                date: '2024-01-01',
                 image: kDogImage,
                 aspectRatio: 1 / 1,
               ),
               ProductTileLayout.idle(
-                name: 'Dog 3',
-                price: 200,
+                title: 'Dog 3',
+                date: '2024-01-01',
                 image: kDogImage,
                 aspectRatio: 1 / 2,
               ),
               ProductTileLayout.idle(
-                name: 'Dog 4',
-                price: 120,
+                title: 'Dog 4',
+                date: '2024-01-01',
                 image: kDogImage,
                 aspectRatio: 1 / 1.8,
               ),

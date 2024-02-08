@@ -49,19 +49,28 @@ class App extends StatelessWidget {
           child: StateProvider<AccountState, AccountNotifier>(
             create: (context) => AccountNotifier.demo(),
             child: AppBase(
-              colorMode: AppThemeColorMode.light,
+              debugShowCheckedModeBanner: false,
+              colorMode: AppThemeColorMode.dark,
               appLogo: ExactAssetPicture(
                 SvgPicture.svgStringDecoderBuilder,
-                'assets/images/logo.svg',
+                'assets/images/nasa_logo.svg',
               ),
-              darkAppLogo: ExactAssetPicture(
+              // darkAppLogo: ExactAssetPicture(
+              //   SvgPicture.svgStringDecoderBuilder,
+              //   'assets/images/nasa_logo.svg',
+              // ),
+              appWarmLogo: ExactAssetPicture(
                 SvgPicture.svgStringDecoderBuilder,
-                'assets/images/logo_dark.svg',
+                'assets/images/nasa_worm_logo.svg',
               ),
+              // darkAppWarmLogo: ExactAssetPicture(
+              //   SvgPicture.svgStringDecoderBuilder,
+              //   'assets/images/nasa_worm_logo.svg',
+              // ),
               routeInformationParser: _router.routeInformationParser,
               routerDelegate: _router.routerDelegate,
               routeInformationProvider: _router.routeInformationProvider,
-              title: 'Asgard',
+              title: 'Nasa Apod',
             ),
           ),
         ),

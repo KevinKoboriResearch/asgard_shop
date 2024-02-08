@@ -19,6 +19,7 @@ void main() {
       ],
       child: CatalogMobileLayout(
         onViewProduct: (id) {},
+        pictureViewModelList: [],
       ),
     ),
   );

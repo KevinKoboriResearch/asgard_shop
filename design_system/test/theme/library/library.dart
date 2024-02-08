@@ -34,6 +34,10 @@ class AppThemeLibrary extends StatelessWidget {
           SvgPicture.svgStringDecoderBuilder,
           '<svg></svg>',
         ),
+        appWarmLogo: StringPicture(
+          SvgPicture.svgStringDecoderBuilder,
+          '<svg></svg>',
+        ),
         colorMode: colorMode,
         formFactor: formFactor,
         child: Builder(

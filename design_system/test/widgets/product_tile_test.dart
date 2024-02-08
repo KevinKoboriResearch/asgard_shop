@@ -3,20 +3,20 @@ import 'package:test_utils/test_utils.dart';
 import '../base/widget.dart';
 
 void main() async {
-  const name = 'Dog';
-  const price = 300.0;
+  const title = 'Dog';
+  const date = '2024-01-01';
 
   testAppWidgets(
     'product_tile_test',
     {
       'idle': const ProductTileLayout.idle(
-        name: name,
-        price: price,
+        title: title,
+        date: date,
         image: kDogImage,
       ),
       'hovered': const ProductTileLayout.hovered(
-        name: name,
-        price: price,
+        title: title,
+        date: date,
         image: kDogImage,
       ),
     },

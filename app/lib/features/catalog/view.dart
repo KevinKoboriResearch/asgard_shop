@@ -1,23 +1,22 @@
 import 'dart:math' as math;
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
-import 'package:nasa_apod_app/services/services.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 
 import 'state.dart';
 import 'widgets/header.dart';
 import 'widgets/navigation_bar.dart';
 
-class CatalogView extends StatelessWidget {
-  const CatalogView({
-    Key? key,
+class CatalogPageStateLoadSuccessView extends StatelessWidget {
+  const CatalogPageStateLoadSuccessView({
+    super.key,
     required this.presenter,
     required this.pictureViewModelList,
-  }) : super(key: key);
+  });
 
   final PicturesPagePresenter presenter;
   final List<PictureViewModel> pictureViewModelList;
@@ -26,8 +25,8 @@ class CatalogView extends StatelessWidget {
   Widget build(BuildContext context) {
     return CatalogMobileLayout(
       pictureViewModelList: pictureViewModelList,
-      onViewProduct: (productId) {
-        context.push('/detail/$productId');
+      onViewProduct: (pictureDate) {
+        context.push('/detail/$pictureDate');
       },
     );
   }
@@ -96,6 +95,56 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
           SliverToBoxAdapter(
             child: CatalogHeader(
               controller: _controller,
+              image: CachedNetworkImageProvider(
+                  widget.pictureViewModelList[1].url),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: AppPadding(
+              padding: const AppEdgeInsets.only(
+                left: AppGapSize.semiBig,
+                top: AppGapSize.semiBig,
+                right: AppGapSize.semiBig,
+                bottom: AppGapSize.none,
+              ),
+              child: Stack(
+                children: [
+                  PictureTile(
+                    key: Key(widget.pictureViewModelList[0].date), // .id
+                    title: widget.pictureViewModelList[0].title,
+                    imageUrl: widget.pictureViewModelList[0].url,
+                    // NetworkImage(widget.pictureViewModelList[0].url),
+                    // CachedNetworkImageProvider(widget.pictureViewModelList[0].url),
+                    // NetworkImage(product.image),
+                    date: widget.pictureViewModelList[0].date,
+                    // aspectRatio: widget.pictureViewModelList[0].aspectRatio,
+                    onTap: () => widget
+                        .onViewProduct(widget.pictureViewModelList[0].date),
+                  ),
+                  Positioned(
+                    right: 0,
+                    bottom: 0,
+                    child: Container(
+                      margin: AppEdgeInsets.regular().toEdgeInsets(theme),
+                      height: theme.typography.title1.fontSize! * 1,
+                      width: theme.typography.title1.fontSize! * 1,
+                      alignment: Alignment.centerLeft,
+                      child: SvgPicture(theme.images.appLogo),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: AppPadding(
+              padding: const AppEdgeInsets.only(
+                left: AppGapSize.semiBig,
+                top: AppGapSize.semiBig,
+                right: AppGapSize.semiBig,
+                bottom: AppGapSize.none,
+              ),
+              child: AppText.title1('Discover Now'),
             ),
           ),
           SliverSafeArea(
@@ -103,28 +152,29 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
             sliver: AppTileSliverGrid(
               padding: EdgeInsets.only(
                 left: theme.spacing.semiBig,
-                top: theme.spacing.semiBig,
+                top: theme.spacing.small,
                 right: theme.spacing.semiBig,
                 bottom: math.max(
                   mediaQuery.padding.bottom,
                   theme.spacing.semiBig,
                 ),
               ),
-              crossAxisCount: (constraints.maxWidth / 200).ceil(),
+              crossAxisCount: (constraints.maxWidth / 300).ceil(),
               children: [
-                ...widget.pictureViewModelList.map(
-                  (pictureViewModel) => ProductTile(
-                    key: Key(pictureViewModel.date), // .id
-                    name: pictureViewModel.title,
-                    image: 
-                    NetworkImage(pictureViewModel.url),
-                    // CachedNetworkImageProvider(pictureViewModel.url),
-                    // NetworkImage(product.image),
-                    price: pictureViewModel.explanation,
-                    aspectRatio: 1,//pictureViewModel.aspectRatio,
-                    onTap: () => widget.onViewProduct(pictureViewModel.date),
-                  ),
-                ),
+                ...widget.pictureViewModelList.skip(1).map(
+                      (pictureViewModel) => PictureTile(
+                        key: Key(pictureViewModel.date), // .id
+                        title: pictureViewModel.title,
+                        imageUrl: pictureViewModel.url,
+                        // NetworkImage(pictureViewModel.url),
+                        // CachedNetworkImageProvider(pictureViewModel.url),
+                        // NetworkImage(product.image),
+                        date: pictureViewModel.date,
+                        // aspectRatio: pictureViewModel.aspectRatio,
+                        onTap: () =>
+                            widget.onViewProduct(pictureViewModel.date),
+                      ),
+                    ),
               ],
             ),
           ),

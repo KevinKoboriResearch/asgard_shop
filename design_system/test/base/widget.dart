@@ -39,6 +39,10 @@ void testAppWidgets(
                 SvgPicture.svgStringDecoderBuilder,
                 '<svg></svg>',
               ),
+              appWarmLogo: StringPicture(
+                SvgPicture.svgStringDecoderBuilder,
+                '<svg></svg>',
+              ),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.max,
