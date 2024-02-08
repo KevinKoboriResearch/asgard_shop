@@ -2,7 +2,7 @@ import 'package:asgard/base/state_provider.dart';
 import 'package:asgard/features/catalog/state.dart';
 import 'package:asgard/features/product_detail/state.dart';
 import 'package:asgard/services/services.dart';
-import 'package:asgard_core/asgard_core.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:provider/provider.dart';
 
 import 'widgets/navigation_bar.dart';

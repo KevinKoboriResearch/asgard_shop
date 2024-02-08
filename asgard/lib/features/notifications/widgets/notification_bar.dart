@@ -1,5 +1,5 @@
 import 'package:asgard/features/notifications/state.dart';
-import 'package:asgard_core/asgard_core.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:provider/provider.dart';
 
 class NotificationBar extends StatelessWidget {

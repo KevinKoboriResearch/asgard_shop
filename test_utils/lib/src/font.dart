@@ -5,14 +5,14 @@ import 'package:flutter_test/flutter_test.dart';
 Future<void> loadTestFonts() async {
   TestWidgetsFlutterBinding.ensureInitialized();
   await _loadFamily(
-    'asgard_core',
+    'nasa_apod_design_system',
     'asgard_icons',
     [
       'fonts/asgard_icons.ttf',
     ],
   );
   await _loadFamily(
-    'asgard_core',
+    'nasa_apod_design_system',
     'Poppins',
     [
       'fonts/Poppins-Regular.ttf',

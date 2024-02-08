@@ -2,7 +2,7 @@ import 'package:asgard/features/account/state.dart';
 import 'package:asgard/features/cart/state.dart';
 import 'package:asgard/features/catalog/view.dart';
 import 'package:asgard/features/notifications/state.dart';
-import 'package:asgard_core/asgard_core.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 

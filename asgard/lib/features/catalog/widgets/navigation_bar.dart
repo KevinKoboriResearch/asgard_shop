@@ -1,7 +1,7 @@
 import 'package:asgard/features/account/widget/avatar.dart';
 import 'package:asgard/features/cart/widget/overview.dart';
 import 'package:asgard/features/notifications/widgets/notification_bar.dart';
-import 'package:asgard_core/asgard_core.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class CatalogNavigationBar extends StatelessWidget {
   const CatalogNavigationBar({
