@@ -1,8 +1,7 @@
-import 'package:nasa_apod_design_system/src/theme/theme.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
-
-import 'gap.dart';
+import 'package:nasa_apod_design_system/src/theme/theme.dart';
+import 'package:nasa_apod_design_system/src/widgets/base/gap.dart';
 
 class AppEdgeInsets extends Equatable {
   const AppEdgeInsets.all(AppGapSize value)

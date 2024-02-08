@@ -1,7 +1,6 @@
-import 'package:nasa_apod_design_system/src/theme/theme.dart';
 import 'package:flutter/widgets.dart';
-
-import 'base/base.dart';
+import 'package:nasa_apod_design_system/src/theme/theme.dart';
+import 'package:nasa_apod_design_system/src/widgets/base/base.dart';
 
 class PriceLabel extends StatelessWidget {
   const PriceLabel(

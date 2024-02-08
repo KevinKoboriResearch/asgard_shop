@@ -1,19 +1,15 @@
-import 'package:nasa_apod_design_system/src/theme/responsive_theme.dart';
-import 'package:nasa_apod_design_system/src/theme/theme.dart';
 import 'package:flutter/cupertino.dart' as cupertino;
 import 'package:flutter/material.dart' as material;
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'buttons/button.dart';
+import 'package:nasa_apod_design_system/src/theme/responsive_theme.dart';
+import 'package:nasa_apod_design_system/src/theme/theme.dart';
+import 'package:nasa_apod_design_system/src/widgets/buttons/button.dart';
 
 class AppBase extends StatelessWidget {
   const AppBase({
-    Key? key,
-    required this.routerDelegate,
-    required this.routeInformationParser,
-    required this.appLogo,
+    required this.routerDelegate, required this.routeInformationParser, required this.appLogo, Key? key,
     this.darkAppLogo,
     this.routeInformationProvider,
     this.backButtonDispatcher,
@@ -75,7 +71,7 @@ class AppBase extends StatelessWidget {
 
   static HeroController createAppHeroController() {
     return HeroController(
-      createRectTween: (Rect? begin, Rect? end) {
+      createRectTween: (begin, end) {
         return material.MaterialRectArcTween(begin: begin, end: end);
       },
     );
@@ -149,7 +145,7 @@ class AppBase extends StatelessWidget {
     Widget result = _buildWidgetApp(context);
     result = Focus(
       canRequestFocus: false,
-      onKey: (FocusNode node, RawKeyEvent event) {
+      onKey: (node, event) {
         if (event is! RawKeyDownEvent ||
             event.logicalKey != LogicalKeyboardKey.escape) {
           return KeyEventResult.ignored;

@@ -1,7 +1,5 @@
-import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:equatable/equatable.dart';
-
-import 'buttons/action_button.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class AppNotification extends Equatable {
   const AppNotification({
@@ -23,8 +21,7 @@ class AppNotification extends Equatable {
 
 class AppNotifiableBar extends StatefulWidget {
   const AppNotifiableBar({
-    Key? key,
-    required this.child,
+    required this.child, Key? key,
     this.notification,
     this.onClosed,
   }) : super(key: key);
@@ -77,16 +74,13 @@ enum AppNotifiableBarState {
 
 class AppNotifiableBarLayout extends StatelessWidget {
   const AppNotifiableBarLayout.opened({
-    Key? key,
-    required this.notification,
-    required this.child,
+    required this.notification, required this.child, Key? key,
     this.onClosed,
   })  : _state = AppNotifiableBarState.opened,
         super(key: key);
 
   const AppNotifiableBarLayout.closed({
-    Key? key,
-    required this.child,
+    required this.child, Key? key,
     this.onClosed,
   })  : _state = AppNotifiableBarState.closed,
         notification = null,
@@ -140,8 +134,7 @@ class AppNotifiableBarLayout extends StatelessWidget {
 
 class _NotificationBody extends StatelessWidget {
   const _NotificationBody({
-    Key? key,
-    required this.notification,
+    required this.notification, Key? key,
     this.onClose,
   }) : super(key: key);
 

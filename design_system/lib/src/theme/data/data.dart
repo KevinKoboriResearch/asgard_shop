@@ -1,16 +1,15 @@
-import 'package:nasa_apod_design_system/src/theme/data/images.dart';
-import 'package:nasa_apod_design_system/src/theme/data/spacing.dart';
-import 'package:nasa_apod_design_system/src/theme/data/typography.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'colors.dart';
-import 'durations.dart';
-import 'form_factor.dart';
-import 'icons.dart';
-import 'radius.dart';
-import 'shadows.dart';
+import 'package:nasa_apod_design_system/src/theme/data/colors.dart';
+import 'package:nasa_apod_design_system/src/theme/data/durations.dart';
+import 'package:nasa_apod_design_system/src/theme/data/form_factor.dart';
+import 'package:nasa_apod_design_system/src/theme/data/icons.dart';
+import 'package:nasa_apod_design_system/src/theme/data/images.dart';
+import 'package:nasa_apod_design_system/src/theme/data/radius.dart';
+import 'package:nasa_apod_design_system/src/theme/data/shadows.dart';
+import 'package:nasa_apod_design_system/src/theme/data/spacing.dart';
+import 'package:nasa_apod_design_system/src/theme/data/typography.dart';
 
 class AppThemeData extends Equatable {
   const AppThemeData({

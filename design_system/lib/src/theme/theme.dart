@@ -1,19 +1,16 @@
 import 'package:flutter/widgets.dart';
+import 'package:nasa_apod_design_system/src/theme/data/data.dart';
 
-import 'data/data.dart';
-
-export 'data/data.dart';
 export 'data/colors.dart';
+export 'data/data.dart';
 export 'data/icons.dart';
 export 'data/radius.dart';
-export 'data/spacing.dart';
 export 'data/shadows.dart';
+export 'data/spacing.dart';
 
 class AppTheme extends InheritedWidget {
   const AppTheme({
-    Key? key,
-    required this.data,
-    required Widget child,
+    required this.data, required Widget child, Key? key,
   }) : super(
           key: key,
           child: child,

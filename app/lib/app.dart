@@ -1,14 +1,13 @@
-import 'package:nasa_apod_app/features/account/state.dart';
-import 'package:nasa_apod_app/features/cart/state.dart';
-import 'package:nasa_apod_app/features/catalog/view.dart';
-import 'package:nasa_apod_app/features/notifications/state.dart';
-import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-
-import 'base/state_provider.dart';
-import 'features/catalog/state.dart';
-import 'features/product_detail/view.dart';
+import 'package:nasa_apod_app/base/state_provider.dart';
+import 'package:nasa_apod_app/features/account/state.dart';
+import 'package:nasa_apod_app/features/cart/state.dart';
+import 'package:nasa_apod_app/features/catalog/state.dart';
+import 'package:nasa_apod_app/features/catalog/view.dart';
+import 'package:nasa_apod_app/features/notifications/state.dart';
+import 'package:nasa_apod_app/features/product_detail/view.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class App extends StatelessWidget {
   App({
