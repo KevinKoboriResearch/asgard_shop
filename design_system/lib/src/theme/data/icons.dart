@@ -1,4 +1,4 @@
-import 'package:nasa_apod_design_system/src/utils/named.dart';
+import 'package:nasa_apod_design_system/src/helpers/named.dart';
 import 'package:equatable/equatable.dart';
 
 class AppIconsData extends Equatable {

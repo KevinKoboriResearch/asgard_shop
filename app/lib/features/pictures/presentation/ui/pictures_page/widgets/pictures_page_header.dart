@@ -2,8 +2,8 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CatalogHeader extends StatelessWidget {
-  const CatalogHeader({
+class PicturesPageHeader extends StatelessWidget {
+  const PicturesPageHeader({
     super.key,
     required this.controller,
     required this.image,
@@ -21,7 +21,7 @@ class CatalogHeader extends StatelessWidget {
         bottom: false,
         child: Padding(
           padding: EdgeInsets.all(
-            theme.spacing.semiBig,
+            theme.spacing.large,
           ),
           child: 
           // Expanded(
@@ -35,7 +35,7 @@ class CatalogHeader extends StatelessWidget {
           //         alignment: Alignment.centerLeft,
           //         child: SvgPicture(theme.images.appLogo),
           //       ),
-          //       AppGap.medium(),
+          //       AppGap.semiSmall(),
                 Container(
                   // color: Colors.red,
                   height: theme.typography.title1.fontSize,

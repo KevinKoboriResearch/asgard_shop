@@ -19,9 +19,9 @@ class PicturesPageCubit extends Cubit<PicturesPageState>
     final loadpicturesResult = await _loadPictures();
     loadpicturesResult.fold(
       (domainFailure) =>
-          emit(PicturesPageStateLoadFailure(domainFailure.toUIFailure)),
+          emit(PicturesPageStateLoadedFailure(domainFailure.toUIFailure)),
       (pictureViewModelList) =>
-          emit(PicturesPageStateLoadSuccess(pictureViewModelList)),
+          emit(PicturesPageStateLoadedSuccess(pictureViewModelList)),
     );
   }
 
@@ -50,9 +50,9 @@ class PicturesPageCubit extends Cubit<PicturesPageState>
     final loadPictureByDateResult = await _loadPictureByDate(date);
     loadPictureByDateResult.fold(
       (domainFailure) =>
-          emit(PicturesPageStateLoadFailure(domainFailure.toUIFailure)),
+          emit(PicturesPageStateLoadedFailure(domainFailure.toUIFailure)),
       (pictureViewModelList) =>
-          emit(PicturesPageStateLoadSuccess(pictureViewModelList)),
+          emit(PicturesPageStateLoadedSuccess(pictureViewModelList)),
     );
   }
 

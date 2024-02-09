@@ -1,13 +1,13 @@
 import 'package:nasa_apod_app/features/account/widget/avatar.dart';
 import 'package:nasa_apod_app/features/cart/widget/overview.dart';
-import 'package:nasa_apod_app/features/catalog/widgets/navigation_bar.dart';
+import 'package:nasa_apod_app/features/pictures/presentation/ui/pictures_page/widgets/pictures_page_navigation_bar.dart';
 import 'package:nasa_apod_app/features/notifications/widgets/notification_bar.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class ProductDetailNavigationBar extends StatelessWidget {
   const ProductDetailNavigationBar({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

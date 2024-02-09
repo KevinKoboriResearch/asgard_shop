@@ -7,12 +7,11 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:go_router/go_router.dart';
 
-import 'state.dart';
-import 'widgets/header.dart';
-import 'widgets/navigation_bar.dart';
+import '../widgets/pictures_page_header.dart';
+import '../widgets/pictures_page_navigation_bar.dart';
 
-class CatalogPageStateLoadSuccessView extends StatelessWidget {
-  const CatalogPageStateLoadSuccessView({
+class PicturesPageStateLoadedSuccessView extends StatelessWidget {
+  const PicturesPageStateLoadedSuccessView({
     super.key,
     required this.presenter,
     required this.pictureViewModelList,
@@ -39,10 +38,10 @@ class CatalogPageStateLoadSuccessView extends StatelessWidget {
 /// * [CartState]
 class CatalogMobileLayout extends StatelessWidget {
   const CatalogMobileLayout({
-    Key? key,
+    super.key,
     required this.pictureViewModelList,
     required this.onViewProduct,
-  }) : super(key: key);
+  });
 
   final List<PictureViewModel> pictureViewModelList;
   final ValueChanged<String> onViewProduct;
@@ -56,17 +55,17 @@ class CatalogMobileLayout extends StatelessWidget {
         pictureViewModelList: pictureViewModelList,
         onViewProduct: onViewProduct,
       ),
-      floatingBar: const CatalogNavigationBar(),
+      floatingBar: const PicturesPageNavigationBar(),
     );
   }
 }
 
 class _BodyWithProducts extends StatefulWidget {
   const _BodyWithProducts({
-    Key? key,
+    super.key,
     required this.pictureViewModelList,
     required this.onViewProduct,
-  }) : super(key: key);
+  });
 
   final List<PictureViewModel> pictureViewModelList;
   final ValueChanged<String> onViewProduct;
@@ -93,7 +92,7 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
         controller: _controller,
         slivers: [
           SliverToBoxAdapter(
-            child: CatalogHeader(
+            child: PicturesPageHeader(
               controller: _controller,
               image: CachedNetworkImageProvider(
                   widget.pictureViewModelList[1].url),
@@ -102,9 +101,9 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
           SliverToBoxAdapter(
             child: AppPadding(
               padding: const AppEdgeInsets.only(
-                left: AppGapSize.semiBig,
-                top: AppGapSize.semiBig,
-                right: AppGapSize.semiBig,
+                left: AppGapSize.large,
+                top: AppGapSize.large,
+                right: AppGapSize.large,
                 bottom: AppGapSize.none,
               ),
               child: Stack(
@@ -113,9 +112,9 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
                     key: Key(widget.pictureViewModelList[0].date), // .id
                     title: widget.pictureViewModelList[0].title,
                     imageUrl: widget.pictureViewModelList[0].url,
-                    // NetworkImage(widget.pictureViewModelList[0].url),
                     // CachedNetworkImageProvider(widget.pictureViewModelList[0].url),
-                    // NetworkImage(product.image),
+                    // CachedNetworkImageProvider(widget.pictureViewModelList[0].url),
+                    // CachedNetworkImageProvider(product.image),
                     date: widget.pictureViewModelList[0].date,
                     // aspectRatio: widget.pictureViewModelList[0].aspectRatio,
                     onTap: () => widget
@@ -125,9 +124,9 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
                     right: 0,
                     bottom: 0,
                     child: Container(
-                      margin: AppEdgeInsets.regular().toEdgeInsets(theme),
-                      height: theme.typography.title1.fontSize! * 1,
-                      width: theme.typography.title1.fontSize! * 1,
+                      margin: AppEdgeInsets.semiSmall().toEdgeInsets(theme),
+                      height: theme.typography.title1.fontSize! * 1.3,
+                      width: theme.typography.title1.fontSize! * 1.3,
                       alignment: Alignment.centerLeft,
                       child: SvgPicture(theme.images.appLogo),
                     ),
@@ -139,9 +138,9 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
           SliverToBoxAdapter(
             child: AppPadding(
               padding: const AppEdgeInsets.only(
-                left: AppGapSize.semiBig,
-                top: AppGapSize.semiBig,
-                right: AppGapSize.semiBig,
+                left: AppGapSize.large,
+                top: AppGapSize.large,
+                right: AppGapSize.large,
                 bottom: AppGapSize.none,
               ),
               child: AppText.title1('Discover Now'),
@@ -151,12 +150,12 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
             top: false,
             sliver: AppTileSliverGrid(
               padding: EdgeInsets.only(
-                left: theme.spacing.semiBig,
-                top: theme.spacing.small,
-                right: theme.spacing.semiBig,
+                left: theme.spacing.large,
+                top: theme.spacing.extraSmall,
+                right: theme.spacing.large,
                 bottom: math.max(
                   mediaQuery.padding.bottom,
-                  theme.spacing.semiBig,
+                  theme.spacing.large,
                 ),
               ),
               crossAxisCount: (constraints.maxWidth / 300).ceil(),
@@ -166,9 +165,9 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
                         key: Key(pictureViewModel.date), // .id
                         title: pictureViewModel.title,
                         imageUrl: pictureViewModel.url,
-                        // NetworkImage(pictureViewModel.url),
                         // CachedNetworkImageProvider(pictureViewModel.url),
-                        // NetworkImage(product.image),
+                        // CachedNetworkImageProvider(pictureViewModel.url),
+                        // CachedNetworkImageProvider(product.image),
                         date: pictureViewModel.date,
                         // aspectRatio: pictureViewModel.aspectRatio,
                         onTap: () =>

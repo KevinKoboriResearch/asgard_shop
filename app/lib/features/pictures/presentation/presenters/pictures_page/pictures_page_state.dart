@@ -4,14 +4,14 @@ abstract class PicturesPageState {}
 
 class PicturesPageStateLoading extends PicturesPageState {}
 
-class PicturesPageStateLoadSuccess extends PicturesPageState {
+class PicturesPageStateLoadedSuccess extends PicturesPageState {
   final List<PictureViewModel> pictureViewModelList;
 
-  PicturesPageStateLoadSuccess(this.pictureViewModelList);
+  PicturesPageStateLoadedSuccess(this.pictureViewModelList);
 }
 
-class PicturesPageStateLoadFailure extends PicturesPageState {
+class PicturesPageStateLoadedFailure extends PicturesPageState {
   final String failureMessage;
 
-  PicturesPageStateLoadFailure(this.failureMessage);
+  PicturesPageStateLoadedFailure(this.failureMessage);
 }

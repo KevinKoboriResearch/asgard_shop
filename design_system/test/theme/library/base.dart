@@ -1,13 +1,13 @@
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
-import 'package:nasa_apod_design_system/src/utils/named.dart';
+import 'package:nasa_apod_design_system/src/helpers/named.dart';
 import 'package:flutter/material.dart';
 
 class ThemeContainer extends StatelessWidget {
   const ThemeContainer({
-    Key? key,
+    super.key,
     required this.title,
     required this.sections,
-  }) : super(key: key);
+  });
   final String title;
   final List<ThemeSection> sections;
 
@@ -17,9 +17,9 @@ class ThemeContainer extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.colors.background,
       body: Padding(
-        padding: theme.spacing.asInsets().big,
+        padding: theme.spacing.asInsets().extraLarge,
         child: SpacedColumn(
-          spaceBetween: theme.spacing.semiBig,
+          spaceBetween: theme.spacing.large,
           children: [
             AppText.title1(title),
             ...sections,
@@ -32,10 +32,10 @@ class ThemeContainer extends StatelessWidget {
 
 class ThemeSection extends StatelessWidget {
   const ThemeSection({
-    Key? key,
+    super.key,
     required this.title,
     required this.categories,
-  }) : super(key: key);
+  });
 
   final String title;
   final List<ThemeCategory> categories;
@@ -58,10 +58,10 @@ class ThemeSection extends StatelessWidget {
 
 class ThemeCategory extends StatelessWidget {
   const ThemeCategory({
-    Key? key,
+    super.key,
     required this.title,
     required this.children,
-  }) : super(key: key);
+  });
 
   final String title;
   final List<Widget> children;
@@ -85,10 +85,10 @@ class ThemeCategory extends StatelessWidget {
 
 class SpacedColumn extends StatelessWidget {
   const SpacedColumn({
-    Key? key,
+    super.key,
     required this.spaceBetween,
     required this.children,
-  }) : super(key: key);
+  });
 
   final double spaceBetween;
   final List<Widget> children;
@@ -114,10 +114,10 @@ class SpacedColumn extends StatelessWidget {
 
 class NamedCell<T> extends StatelessWidget {
   const NamedCell({
-    Key? key,
+    super.key,
     required this.value,
     required this.builder,
-  }) : super(key: key);
+  });
 
   final Named<T> value;
   final ValueWidgetBuilder<T> builder;

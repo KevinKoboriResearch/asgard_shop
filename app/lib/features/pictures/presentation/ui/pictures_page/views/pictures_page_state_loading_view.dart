@@ -33,7 +33,7 @@ class PicturesPageStateLoadingView extends StatelessWidget {
                 onPressed: picturesPagePresenter.loadPictures,
                 child: const AppText('List all'),
               ),
-              const AppGap.medium(),
+              const AppGap.semiSmall(),
               // TODO: NOW
               // ApodDatePickerDialog(picturesPagePresenter),
             ],

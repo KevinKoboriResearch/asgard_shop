@@ -3,15 +3,12 @@ import 'package:tap_builder/tap_builder.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton({
-    Key? key,
+    super.key,
     this.icon,
     this.title,
     this.onTap,
     this.mainAxisSize = MainAxisSize.min,
-  })  : assert(
-          icon != null || title != null,
-        ),
-        super(key: key);
+  }) : assert(icon != null || title != null);
 
   final String? icon;
   final String? title;
@@ -68,7 +65,7 @@ enum AppButtonState {
 
 class AppButtonLayout extends StatelessWidget {
   const AppButtonLayout.inactive({
-    Key? key,
+    super.key,
     this.icon,
     this.title,
     this.mainAxisSize = MainAxisSize.min,
@@ -77,13 +74,10 @@ class AppButtonLayout extends StatelessWidget {
     this.pressedBackgroundColor,
     this.foregroundColor,
   })  : _state = AppButtonState.inactive,
-        assert(
-          icon != null || title != null,
-        ),
-        super(key: key);
+        assert(icon != null || title != null);
 
   const AppButtonLayout.hovered({
-    Key? key,
+    super.key,
     this.icon,
     this.title,
     this.mainAxisSize = MainAxisSize.min,
@@ -92,13 +86,10 @@ class AppButtonLayout extends StatelessWidget {
     this.pressedBackgroundColor,
     this.foregroundColor,
   })  : _state = AppButtonState.hovered,
-        assert(
-          icon != null || title != null,
-        ),
-        super(key: key);
+        assert(icon != null || title != null);
 
   const AppButtonLayout.pressed({
-    Key? key,
+    super.key,
     this.icon,
     this.title,
     this.mainAxisSize = MainAxisSize.min,
@@ -107,10 +98,7 @@ class AppButtonLayout extends StatelessWidget {
     this.pressedBackgroundColor,
     this.foregroundColor,
   })  : _state = AppButtonState.pressed,
-        assert(
-          icon != null || title != null,
-        ),
-        super(key: key);
+        assert(icon != null || title != null);
 
   final String? icon;
   final String? title;
@@ -126,7 +114,7 @@ class AppButtonLayout extends StatelessWidget {
     final theme = AppTheme.of(context);
     final title = this.title;
     final icon = this.icon;
-    final hasBoth = (title != null && icon != null);
+    final hasBoth = title != null && icon != null;
     final foregroundColor = this.foregroundColor ?? theme.colors.accentOpposite;
     final backgroundColor = () {
       switch (_state) {
@@ -145,9 +133,8 @@ class AppButtonLayout extends StatelessWidget {
         color: backgroundColor,
       ),
       padding: EdgeInsets.symmetric(
-        vertical: theme.spacing.semiSmall,
-        horizontal:
-            title != null ? theme.spacing.semiBig : theme.spacing.semiSmall,
+        vertical: theme.spacing.small,
+        horizontal: title != null ? theme.spacing.large : theme.spacing.small,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

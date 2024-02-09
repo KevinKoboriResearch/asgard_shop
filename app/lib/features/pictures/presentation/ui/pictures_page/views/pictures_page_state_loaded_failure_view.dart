@@ -2,11 +2,11 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-class PicturesPageStateLoadFailureView extends StatelessWidget {
+class PicturesPageStateLoadedFailureView extends StatelessWidget {
   final String failureMessage;
   final void Function() reload;
 
-  const PicturesPageStateLoadFailureView({
+  const PicturesPageStateLoadedFailureView({
     required this.failureMessage,
     required this.reload,
     super.key,

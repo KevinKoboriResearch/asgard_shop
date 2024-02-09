@@ -9,7 +9,7 @@ import 'package:nasa_apod_design_system/src/widgets/buttons/button.dart';
 
 class AppBase extends StatelessWidget {
   const AppBase({
-    Key? key,
+    super.key,
     required this.routerDelegate,
     required this.routeInformationParser,
     required this.appLogo,
@@ -37,7 +37,7 @@ class AppBase extends StatelessWidget {
     this.localizationsDelegates,
     this.restorationScopeId,
     this.colorMode,
-  }) : super(key: key);
+  });
 
   final AppThemeColorMode? colorMode;
   final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;

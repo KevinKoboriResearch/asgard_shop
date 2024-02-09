@@ -3,10 +3,10 @@ import 'package:nasa_apod_app/features/cart/widget/overview.dart';
 import 'package:nasa_apod_app/features/notifications/widgets/notification_bar.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-class CatalogNavigationBar extends StatelessWidget {
-  const CatalogNavigationBar({
-    Key? key,
-  }) : super(key: key);
+class PicturesPageNavigationBar extends StatelessWidget {
+  const PicturesPageNavigationBar({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,8 @@ class CatalogNavigationBar extends StatelessWidget {
 
 class CurrentUserAccount extends StatelessWidget {
   const CurrentUserAccount({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

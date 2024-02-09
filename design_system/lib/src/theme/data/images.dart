@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:nasa_apod_design_system/src/utils/named.dart';
+import 'package:nasa_apod_design_system/src/helpers/named.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';

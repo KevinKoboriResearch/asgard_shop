@@ -4,11 +4,12 @@ import 'package:gap/gap.dart';
 
 enum AppGapSize {
   none,
+  extraSmall,
   small,
   semiSmall,
-  medium,
-  semiBig,
-  big,
+  large,
+  extraLarge,
+  superLarge,
 }
 
 extension AppGapSizeExtension on AppGapSize {
@@ -16,16 +17,18 @@ extension AppGapSizeExtension on AppGapSize {
     switch (this) {
       case AppGapSize.none:
         return 0;
+      case AppGapSize.extraSmall:
+        return theme.spacing.extraSmall;
       case AppGapSize.small:
         return theme.spacing.small;
       case AppGapSize.semiSmall:
         return theme.spacing.semiSmall;
-      case AppGapSize.medium:
-        return theme.spacing.regular;
-      case AppGapSize.semiBig:
-        return theme.spacing.semiBig;
-      case AppGapSize.big:
-        return theme.spacing.big;
+      case AppGapSize.large:
+        return theme.spacing.large;
+      case AppGapSize.extraLarge:
+        return theme.spacing.extraLarge;
+      case AppGapSize.superLarge:
+        return theme.spacing.superLarge;
     }
   }
 }
@@ -33,33 +36,32 @@ extension AppGapSizeExtension on AppGapSize {
 class AppGap extends StatelessWidget {
   const AppGap(
     this.size, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
+
+  const AppGap.extraSmall({
+    super.key,
+  }) : size = AppGapSize.extraSmall;
 
   const AppGap.small({
-    Key? key,
-  })  : size = AppGapSize.small,
-        super(key: key);
+    super.key,
+  }) : size = AppGapSize.small;
 
   const AppGap.semiSmall({
-    Key? key,
-  })  : size = AppGapSize.semiSmall,
-        super(key: key);
+    super.key,
+  }) : size = AppGapSize.semiSmall;
 
-  const AppGap.medium({
-    Key? key,
-  })  : size = AppGapSize.medium,
-        super(key: key);
+  const AppGap.large({
+    super.key,
+  }) : size = AppGapSize.large;
 
-  const AppGap.semiBig({
-    Key? key,
-  })  : size = AppGapSize.semiBig,
-        super(key: key);
+  const AppGap.extraLarge({
+    super.key,
+  }) : size = AppGapSize.extraLarge;
 
-  const AppGap.big({
-    Key? key,
-  })  : size = AppGapSize.big,
-        super(key: key);
+  const AppGap.superLarge({
+    super.key,
+  }) : size = AppGapSize.superLarge;
 
   final AppGapSize size;
 

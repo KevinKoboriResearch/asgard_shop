@@ -4,9 +4,9 @@ import 'package:nasa_apod_design_system/src/widgets/buttons/action_button.dart';
 
 class AppBackButton extends StatelessWidget {
   const AppBackButton({
-    Key? key,
+    super.key,
     this.onTap,
-  }) : super(key: key);
+  });
 
   final VoidCallback? onTap;
 

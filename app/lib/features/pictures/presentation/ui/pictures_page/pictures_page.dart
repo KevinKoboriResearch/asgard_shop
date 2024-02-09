@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nasa_apod_app/features/catalog/view.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 
@@ -38,7 +35,7 @@ class _PicturesPageState extends State<PicturesPage> {
         //     reload: widget.picturesPagePresenter.loadPictures,
         //   );
         // } else if (state is PicturesPageStateLoadSuccess) {
-        return CatalogPageStateLoadSuccessView(
+        return PicturesPageStateLoadedSuccessView(
           presenter: widget.picturesPagePresenter,
           pictureViewModelList: mockList,
           // state.pictureViewModelList,

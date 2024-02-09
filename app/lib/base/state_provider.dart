@@ -4,10 +4,10 @@ import 'package:provider/provider.dart';
 class StateProvider<State, Notifier extends ValueNotifier<State>>
     extends StatelessWidget {
   const StateProvider({
-    Key? key,
+    super.key,
     required this.create,
     required this.child,
-  }) : super(key: key);
+  });
 
   final Create<Notifier> create;
   final Widget child;

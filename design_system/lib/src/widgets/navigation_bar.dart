@@ -2,14 +2,14 @@ import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class AppNavigationBar extends StatelessWidget {
   const AppNavigationBar({
-    Key? key,
+    super.key,
     required this.leading,
     required this.body,
     required this.summary,
     this.canNavigateBack = false,
     this.animation,
     this.action,
-  }) : super(key: key);
+  });
 
   final Animation<double>? animation;
   final bool canNavigateBack;
@@ -41,7 +41,7 @@ class AppNavigationBar extends StatelessWidget {
               ),
             ],
           ),
-        const AppGap.medium(),
+        const AppGap.semiSmall(),
         if (action == null) body,
         if (action != null)
           Expanded(
@@ -65,7 +65,7 @@ class AppNavigationBar extends StatelessWidget {
               ],
             ),
           ),
-        const AppGap.medium(),
+        const AppGap.semiSmall(),
         if (action == null) summary,
         if (action != null)
           Stack(
@@ -112,13 +112,13 @@ class AppNavigationBar extends StatelessWidget {
             ),
           ],
         ),
-        const AppGap.medium(),
+        const AppGap.semiSmall(),
         if (canNavigateBack) Expanded(child: summary),
         if (!canNavigateBack)
           Expanded(
             child: body,
           ),
-        const AppGap.medium(),
+        const AppGap.semiSmall(),
         if (!canNavigateBack) summary,
         if (canNavigateBack && action != null) action,
       ],
@@ -138,9 +138,9 @@ class AppNavigationBar extends StatelessWidget {
 
 class NavigationBarContainer extends StatelessWidget {
   const NavigationBarContainer({
-    Key? key,
+    super.key,
     required this.child,
-  }) : super(key: key);
+  });
 
   final Widget child;
 
@@ -148,7 +148,7 @@ class NavigationBarContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
     return AppContainer(
-      padding: const AppEdgeInsets.regular(),
+      padding: const AppEdgeInsets.semiSmall(),
       decoration: BoxDecoration(
         color: theme.colors.actionBarBackground,
         borderRadius: theme.radius.asBorderRadius().regular,

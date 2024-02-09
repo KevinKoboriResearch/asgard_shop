@@ -12,57 +12,52 @@ enum AppTextLevel {
 class AppText extends StatelessWidget {
   const AppText(
     this.data, {
-    Key? key,
+    super.key,
     this.color,
     this.fontSize,
     this.maxLines,
     this.level = AppTextLevel.paragraph1,
-  }) : super(key: key);
+  });
 
   const AppText.paragraph1(
     this.data, {
-    Key? key,
+    super.key,
     this.color,
     this.fontSize,
     this.maxLines,
-  })  : level = AppTextLevel.paragraph1,
-        super(key: key);
+  }) : level = AppTextLevel.paragraph1;
 
   const AppText.paragraph2(
     this.data, {
-    Key? key,
+    super.key,
     this.color,
     this.fontSize,
     this.maxLines,
-  })  : level = AppTextLevel.paragraph2,
-        super(key: key);
+  }) : level = AppTextLevel.paragraph2;
 
   const AppText.title1(
     this.data, {
-    Key? key,
+    super.key,
     this.color,
     this.fontSize,
     this.maxLines,
-  })  : level = AppTextLevel.title1,
-        super(key: key);
+  }) : level = AppTextLevel.title1;
 
   const AppText.title2(
     this.data, {
-    Key? key,
+    super.key,
     this.color,
     this.fontSize,
     this.maxLines,
-  })  : level = AppTextLevel.title2,
-        super(key: key);
+  }) : level = AppTextLevel.title2;
 
   const AppText.title3(
     this.data, {
-    Key? key,
+    super.key,
     this.color,
     this.fontSize,
     this.maxLines,
-  })  : level = AppTextLevel.title3,
-        super(key: key);
+  }) : level = AppTextLevel.title3;
 
   final String data;
   final AppTextLevel level;

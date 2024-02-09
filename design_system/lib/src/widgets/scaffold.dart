@@ -4,11 +4,11 @@ import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class AppScaffold extends StatelessWidget {
   const AppScaffold({
-    Key? key,
+    super.key,
     required this.body,
     this.backgroundColor,
     this.floatingBar,
-  }) : super(key: key);
+  });
 
   final Widget body;
   final Color? backgroundColor;
@@ -29,15 +29,15 @@ class AppScaffold extends StatelessWidget {
               duration: theme.durations.regular,
               left: math.max(
                 mediaQuery.padding.left,
-                theme.spacing.regular,
+                theme.spacing.semiSmall,
               ),
               right: math.max(
                 mediaQuery.padding.right,
-                theme.spacing.regular,
+                theme.spacing.semiSmall,
               ),
               bottom: math.max(
                 mediaQuery.padding.bottom,
-                theme.spacing.regular,
+                theme.spacing.semiSmall,
               ),
               child: floatingBar,
             ),

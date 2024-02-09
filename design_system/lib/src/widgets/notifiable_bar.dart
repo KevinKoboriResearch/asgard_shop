@@ -22,10 +22,10 @@ class AppNotification extends Equatable {
 class AppNotifiableBar extends StatefulWidget {
   const AppNotifiableBar({
     required this.child,
-    Key? key,
+    super.key,
     this.notification,
     this.onClosed,
-  }) : super(key: key);
+  });
 
   final AppNotification? notification;
   final VoidCallback? onClosed;
@@ -77,18 +77,16 @@ class AppNotifiableBarLayout extends StatelessWidget {
   const AppNotifiableBarLayout.opened({
     required this.notification,
     required this.child,
-    Key? key,
+    super.key,
     this.onClosed,
-  })  : _state = AppNotifiableBarState.opened,
-        super(key: key);
+  }) : _state = AppNotifiableBarState.opened;
 
   const AppNotifiableBarLayout.closed({
     required this.child,
-    Key? key,
+    super.key,
     this.onClosed,
   })  : _state = AppNotifiableBarState.closed,
-        notification = null,
-        super(key: key);
+        notification = null;
 
   final AppNotifiableBarState _state;
   final AppNotification? notification;
@@ -139,9 +137,9 @@ class AppNotifiableBarLayout extends StatelessWidget {
 class _NotificationBody extends StatelessWidget {
   const _NotificationBody({
     required this.notification,
-    Key? key,
+    super.key,
     this.onClose,
-  }) : super(key: key);
+  });
 
   final AppNotification notification;
   final VoidCallback? onClose;
@@ -152,7 +150,7 @@ class _NotificationBody extends StatelessWidget {
     return Row(
       children: [
         AppPadding(
-          padding: const AppEdgeInsets.regular(),
+          padding: const AppEdgeInsets.semiSmall(),
           child: AppIcon.regular(
             notification.icon,
             color: theme.colors.accentOpposite,
@@ -161,7 +159,7 @@ class _NotificationBody extends StatelessWidget {
         Expanded(
           child: AppPadding(
             padding: const AppEdgeInsets.symmetric(
-              vertical: AppGapSize.medium,
+              vertical: AppGapSize.semiSmall,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,

@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 
 class CurrentUserAvatar extends StatelessWidget {
   const CurrentUserAvatar({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,9 @@ class CurrentUserAvatar extends StatelessWidget {
 
 class UserAvatar extends StatelessWidget {
   const UserAvatar({
-    Key? key,
+    super.key,
     required this.url,
-  }) : super(key: key);
+  });
 
   final String url;
 

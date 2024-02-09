@@ -4,11 +4,11 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class AppTileSliverGrid extends StatelessWidget {
   const AppTileSliverGrid({
-    Key? key,
+    super.key,
     required this.children,
     this.crossAxisCount = 2,
     this.padding,
-  }) : super(key: key);
+  });
 
   final int crossAxisCount;
   final List<Widget> children;
@@ -19,8 +19,8 @@ class AppTileSliverGrid extends StatelessWidget {
     final theme = AppTheme.of(context);
     final grid = SliverMasonryGrid.count(
       crossAxisCount: crossAxisCount,
-      mainAxisSpacing: theme.spacing.regular,
-      crossAxisSpacing: theme.spacing.regular,
+      mainAxisSpacing: theme.spacing.semiSmall,
+      crossAxisSpacing: theme.spacing.semiSmall,
       childCount: children.length,
       itemBuilder: (context, index) {
         return children[index];

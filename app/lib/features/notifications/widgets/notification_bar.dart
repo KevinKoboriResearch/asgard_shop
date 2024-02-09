@@ -4,9 +4,9 @@ import 'package:provider/provider.dart';
 
 class NotificationBar extends StatelessWidget {
   const NotificationBar({
-    Key? key,
+    super.key,
     required this.child,
-  }) : super(key: key);
+  });
 
   final Widget child;
 

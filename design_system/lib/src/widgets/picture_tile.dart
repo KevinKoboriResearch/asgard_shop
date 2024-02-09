@@ -23,14 +23,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 class PictureTile extends StatefulWidget {
   const PictureTile({
-    Key? key,
+    super.key,
     required this.title,
     // required this.image,
     required this.imageUrl,
     required this.date,
     required this.onTap,
     // this.aspectRatio = 1.0,
-  }) : super(key: key);
+  });
 
   final String title;
   // final double aspectRatio;
@@ -112,22 +112,20 @@ enum ProductTileState {
 
 class ProductTileLayout extends StatelessWidget {
   const ProductTileLayout.idle({
-    Key? key,
+    super.key,
     required this.title,
     required this.image,
     required this.date,
     this.aspectRatio = 1.0,
-  })  : _state = ProductTileState.idle,
-        super(key: key);
+  }) : _state = ProductTileState.idle;
 
   const ProductTileLayout.hovered({
-    Key? key,
+    super.key,
     required this.title,
     required this.image,
     required this.date,
     this.aspectRatio = 1.0,
-  })  : _state = ProductTileState.hovered,
-        super(key: key);
+  }) : _state = ProductTileState.hovered;
 
   final String title;
   final double aspectRatio;
@@ -184,7 +182,7 @@ class ProductTileLayout extends StatelessWidget {
                         ],
                       ),
                     ),
-                    child: AppPadding.semiSmall(
+                    child: AppPadding.small(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -214,7 +212,7 @@ class ProductTileLayout extends StatelessWidget {
 
 Future<double> getImageAspectRatio(String imageUrl) async {
   final ImageStream imageStream =
-      NetworkImage(imageUrl).resolve(ImageConfiguration.empty);
+      CachedNetworkImageProvider(imageUrl).resolve(ImageConfiguration.empty);
   final Completer<double>? completer = Completer();
 
   void imageListener(ImageInfo info, bool _) {

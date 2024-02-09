@@ -3,10 +3,10 @@ import 'package:tap_builder/tap_builder.dart';
 
 class AppActionButton extends StatelessWidget {
   const AppActionButton({
-    Key? key,
+    super.key,
     required this.icon,
     this.onTap,
-  }) : super(key: key);
+  });
 
   final String icon;
   final VoidCallback? onTap;
@@ -18,17 +18,11 @@ class AppActionButton extends StatelessWidget {
       builder: (context, state, hasFocus) {
         switch (state) {
           case TapState.hover:
-            return AppActionButtonLayout.hovered(
-              icon: icon,
-            );
+            return AppActionButtonLayout.hovered(icon: icon);
           case TapState.pressed:
-            return AppActionButtonLayout.pressed(
-              icon: icon,
-            );
+            return AppActionButtonLayout.pressed(icon: icon);
           default:
-            return AppActionButtonLayout.inactive(
-              icon: icon,
-            );
+            return AppActionButtonLayout.inactive(icon: icon);
         }
       },
     );
@@ -37,22 +31,19 @@ class AppActionButton extends StatelessWidget {
 
 class AppActionButtonLayout extends StatelessWidget {
   const AppActionButtonLayout.inactive({
-    Key? key,
+    super.key,
     required this.icon,
-  })  : _state = AppButtonState.inactive,
-        super(key: key);
+  }) : _state = AppButtonState.inactive;
 
   const AppActionButtonLayout.hovered({
-    Key? key,
+    super.key,
     required this.icon,
-  })  : _state = AppButtonState.hovered,
-        super(key: key);
+  }) : _state = AppButtonState.hovered;
 
   const AppActionButtonLayout.pressed({
-    Key? key,
+    super.key,
     required this.icon,
-  })  : _state = AppButtonState.pressed,
-        super(key: key);
+  }) : _state = AppButtonState.pressed;
 
   final String icon;
   final AppButtonState _state;

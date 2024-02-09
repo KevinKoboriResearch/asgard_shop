@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 
 class CartOverview extends StatelessWidget {
   const CartOverview({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

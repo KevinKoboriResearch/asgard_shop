@@ -4,9 +4,9 @@ import 'package:sliver_tools/sliver_tools.dart';
 
 class AppContentSheet extends StatelessWidget {
   const AppContentSheet({
-    Key? key,
+    super.key,
     required this.children,
-  }) : super(key: key);
+  });
 
   final List<Widget> children;
 
@@ -30,7 +30,7 @@ class AppContentSheet extends StatelessWidget {
         slivers: [
           SliverPadding(
             padding: EdgeInsets.only(
-              top: mediaQuery.padding.top + theme.spacing.regular,
+              top: mediaQuery.padding.top + theme.spacing.semiSmall,
             ),
             sliver: SliverStack(
               children: <Widget>[
@@ -44,10 +44,10 @@ class AppContentSheet extends StatelessWidget {
                 ),
                 SliverPadding(
                   padding: EdgeInsets.only(
-                    left: theme.spacing.semiBig,
-                    right: theme.spacing.semiBig,
-                    top: theme.spacing.semiBig,
-                    bottom: mediaQuery.padding.bottom + theme.spacing.semiBig,
+                    left: theme.spacing.large,
+                    right: theme.spacing.large,
+                    top: theme.spacing.large,
+                    bottom: mediaQuery.padding.bottom + theme.spacing.large,
                   ),
                   sliver: SliverList(
                     delegate: SliverChildListDelegate(

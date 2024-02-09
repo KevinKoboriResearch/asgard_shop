@@ -25,6 +25,12 @@ class AppEdgeInsets extends Equatable {
     this.bottom = AppGapSize.none,
   });
 
+  const AppEdgeInsets.extraSmall()
+      : left = AppGapSize.extraSmall,
+        top = AppGapSize.extraSmall,
+        right = AppGapSize.extraSmall,
+        bottom = AppGapSize.extraSmall;
+
   const AppEdgeInsets.small()
       : left = AppGapSize.small,
         top = AppGapSize.small,
@@ -37,23 +43,17 @@ class AppEdgeInsets extends Equatable {
         right = AppGapSize.semiSmall,
         bottom = AppGapSize.semiSmall;
 
-  const AppEdgeInsets.regular()
-      : left = AppGapSize.medium,
-        top = AppGapSize.medium,
-        right = AppGapSize.medium,
-        bottom = AppGapSize.medium;
+  const AppEdgeInsets.large()
+      : left = AppGapSize.large,
+        top = AppGapSize.large,
+        right = AppGapSize.large,
+        bottom = AppGapSize.large;
 
-  const AppEdgeInsets.semiBig()
-      : left = AppGapSize.semiBig,
-        top = AppGapSize.semiBig,
-        right = AppGapSize.semiBig,
-        bottom = AppGapSize.semiBig;
-
-  const AppEdgeInsets.big()
-      : left = AppGapSize.big,
-        top = AppGapSize.big,
-        right = AppGapSize.big,
-        bottom = AppGapSize.big;
+  const AppEdgeInsets.extraLarge()
+      : left = AppGapSize.extraLarge,
+        top = AppGapSize.extraLarge,
+        right = AppGapSize.extraLarge,
+        bottom = AppGapSize.extraLarge;
 
   final AppGapSize left;
   final AppGapSize top;
@@ -80,40 +80,35 @@ class AppEdgeInsets extends Equatable {
 
 class AppPadding extends StatelessWidget {
   const AppPadding({
-    Key? key,
+    super.key,
     this.padding = const AppEdgeInsets.all(AppGapSize.none),
     this.child,
-  }) : super(key: key);
+  });
+
+  const AppPadding.extraSmall({
+    super.key,
+    this.child,
+  }) : padding = const AppEdgeInsets.all(AppGapSize.extraSmall);
 
   const AppPadding.small({
-    Key? key,
+    super.key,
     this.child,
-  })  : padding = const AppEdgeInsets.all(AppGapSize.none),
-        super(key: key);
+  }) : padding = const AppEdgeInsets.all(AppGapSize.small);
 
   const AppPadding.semiSmall({
-    Key? key,
+    super.key,
     this.child,
-  })  : padding = const AppEdgeInsets.all(AppGapSize.semiSmall),
-        super(key: key);
+  }) : padding = const AppEdgeInsets.all(AppGapSize.semiSmall);
 
-  const AppPadding.regular({
-    Key? key,
+  const AppPadding.large({
+    super.key,
     this.child,
-  })  : padding = const AppEdgeInsets.all(AppGapSize.medium),
-        super(key: key);
+  }) : padding = const AppEdgeInsets.all(AppGapSize.large);
 
-  const AppPadding.semiBig({
-    Key? key,
+  const AppPadding.extraLarge({
+    super.key,
     this.child,
-  })  : padding = const AppEdgeInsets.all(AppGapSize.semiBig),
-        super(key: key);
-
-  const AppPadding.big({
-    Key? key,
-    this.child,
-  })  : padding = const AppEdgeInsets.all(AppGapSize.big),
-        super(key: key);
+  }) : padding = const AppEdgeInsets.all(AppGapSize.extraLarge);
 
   final AppEdgeInsets padding;
   final Widget? child;

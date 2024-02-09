@@ -5,8 +5,8 @@
 // class DateLabel extends StatelessWidget {
 //   const DateLabel(
 //     this.value, {
-//     Key? key,
-//   }) : super(key: key);
+//     super.key,
+//   });
 
 //   final String value;
 

@@ -23,31 +23,28 @@ extension AppIconSizeExtension on AppIconSizesData {
 class AppIcon extends StatelessWidget {
   const AppIcon(
     this.data, {
-    Key? key,
+    super.key,
     this.color,
     this.size = AppIconSize.regular,
-  }) : super(key: key);
+  });
 
   const AppIcon.small(
     this.data, {
-    Key? key,
+    super.key,
     this.color,
-  })  : size = AppIconSize.small,
-        super(key: key);
+  }) : size = AppIconSize.small;
 
   const AppIcon.regular(
     this.data, {
-    Key? key,
+    super.key,
     this.color,
-  })  : size = AppIconSize.regular,
-        super(key: key);
+  }) : size = AppIconSize.regular;
 
   const AppIcon.big(
     this.data, {
-    Key? key,
+    super.key,
     this.color,
-  })  : size = AppIconSize.big,
-        super(key: key);
+  }) : size = AppIconSize.big;
 
   final String data;
   final Color? color;
@@ -73,11 +70,11 @@ class AppIcon extends StatelessWidget {
 class AppAnimatedIcon extends StatelessWidget {
   const AppAnimatedIcon(
     this.data, {
-    Key? key,
+    super.key,
     this.color,
     this.size = AppIconSize.small,
     this.duration = const Duration(milliseconds: 200),
-  }) : super(key: key);
+  });
 
   final String data;
   final Color? color;
@@ -99,9 +96,7 @@ class AppAnimatedIcon extends StatelessWidget {
       );
     }
     return AnimatedDefaultTextStyle(
-      child: Text(
-        data,
-      ),
+      child: Text(data),
       style: TextStyle(
         fontFamily: theme.icons.fontFamily,
         package: theme.icons.fontPackage,

@@ -12,11 +12,8 @@ class AppTheme extends InheritedWidget {
   const AppTheme({
     required this.data,
     required Widget child,
-    Key? key,
-  }) : super(
-          key: key,
-          child: child,
-        );
+    super.key,
+  }) : super(child: child);
 
   final AppThemeData data;
 
