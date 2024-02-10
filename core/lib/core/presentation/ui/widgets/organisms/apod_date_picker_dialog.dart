@@ -9,8 +9,11 @@ class ApodDatePickerDialog extends StatefulWidget
       // TODO: NOW - REMOVE THIS DEPENDECY, USE CALLBACK
       // this.picturesPagePresenter,
       {
+    required this.onLoadPictureByDate,
     super.key,
   }) : preferredSize = const Size.fromHeight(kToolbarHeight);
+
+  final ValueChanged<DateTime> onLoadPictureByDate;
 
   @override
   final Size preferredSize;
@@ -75,6 +78,7 @@ class _ApodDatePickerDialogState extends State<ApodDatePickerDialog>
         _selectedDate.value = newSelectedDate;
         // TODO: NOW - REMOVE THIS DEPENDECY, USE CALLBACK
         // widget.picturesPagePresenter.loadPictureByDate(_selectedDate.value);
+        widget.onLoadPictureByDate(_selectedDate.value);
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
               'Selected: ${_selectedDate.value.day}/${_selectedDate.value.month}/${_selectedDate.value.year}'),

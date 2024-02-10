@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
-import 'package:go_router/go_router.dart';
 
 import '../widgets/pictures_page_header.dart';
 import '../widgets/pictures_page_navigation_bar.dart';
@@ -15,17 +14,24 @@ class PicturesPageStateLoadedSuccessView extends StatelessWidget {
     super.key,
     required this.presenter,
     required this.pictureViewModelList,
+    required this.onLoadAllPicturesList,
+    required this.onLoadPictureByDate,
   });
 
   final PicturesPagePresenter presenter;
   final List<PictureViewModel> pictureViewModelList;
+  final VoidCallback onLoadAllPicturesList;
+  final ValueChanged<DateTime> onLoadPictureByDate;
 
   @override
   Widget build(BuildContext context) {
     return CatalogMobileLayout(
       pictureViewModelList: pictureViewModelList,
-      onViewProduct: (pictureDate) {
-        context.push('/detail/$pictureDate');
+      onLoadAllPicturesList: onLoadAllPicturesList,
+      onLoadPictureByDate: onLoadPictureByDate,
+      onViewProduct: (pictureViewModel) {
+        // GoRouter.of(context)
+        //     .push('/pictures/detail/${pictureViewModel.date}', extra: pictureViewModel);
       },
     );
   }
@@ -41,10 +47,14 @@ class CatalogMobileLayout extends StatelessWidget {
     super.key,
     required this.pictureViewModelList,
     required this.onViewProduct,
+    required this.onLoadAllPicturesList,
+    required this.onLoadPictureByDate,
   });
 
   final List<PictureViewModel> pictureViewModelList;
-  final ValueChanged<String> onViewProduct;
+  final ValueChanged<PictureViewModel> onViewProduct;
+  final VoidCallback onLoadAllPicturesList;
+  final ValueChanged<DateTime> onLoadPictureByDate;
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +63,8 @@ class CatalogMobileLayout extends StatelessWidget {
       body: _BodyWithProducts(
         // products: products,
         pictureViewModelList: pictureViewModelList,
+        onLoadAllPicturesList: onLoadAllPicturesList,
+        onLoadPictureByDate: onLoadPictureByDate,
         onViewProduct: onViewProduct,
       ),
       floatingBar: const PicturesPageNavigationBar(),
@@ -65,10 +77,14 @@ class _BodyWithProducts extends StatefulWidget {
     super.key,
     required this.pictureViewModelList,
     required this.onViewProduct,
+    required this.onLoadAllPicturesList,
+    required this.onLoadPictureByDate,
   });
 
   final List<PictureViewModel> pictureViewModelList;
-  final ValueChanged<String> onViewProduct;
+  final ValueChanged<PictureViewModel> onViewProduct;
+  final VoidCallback onLoadAllPicturesList;
+  final ValueChanged<DateTime> onLoadPictureByDate;
 
   @override
   State<_BodyWithProducts> createState() => _BodyWithProductsState();
@@ -106,30 +122,41 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
                 right: AppGapSize.large,
                 bottom: AppGapSize.none,
               ),
-              child: Stack(
+              child: Column(
                 children: [
-                  PictureTile(
-                    key: Key(widget.pictureViewModelList[0].date), // .id
-                    title: widget.pictureViewModelList[0].title,
-                    imageUrl: widget.pictureViewModelList[0].url,
-                    // CachedNetworkImageProvider(widget.pictureViewModelList[0].url),
-                    // CachedNetworkImageProvider(widget.pictureViewModelList[0].url),
-                    // CachedNetworkImageProvider(product.image),
-                    date: widget.pictureViewModelList[0].date,
-                    // aspectRatio: widget.pictureViewModelList[0].aspectRatio,
-                    onTap: () => widget
-                        .onViewProduct(widget.pictureViewModelList[0].date),
+                  OutlinedButton(
+                    onPressed: () => widget.onLoadAllPicturesList,
+                    child: const Text('List all'),
                   ),
-                  Positioned(
-                    right: 0,
-                    bottom: 0,
-                    child: Container(
-                      margin: AppEdgeInsets.semiSmall().toEdgeInsets(theme),
-                      height: theme.typography.title1.fontSize! * 1.3,
-                      width: theme.typography.title1.fontSize! * 1.3,
-                      alignment: Alignment.centerLeft,
-                      child: SvgPicture(theme.images.appLogo),
-                    ),
+                  // const XGap.medium(),
+                  ApodDatePickerDialog(
+                      onLoadPictureByDate: widget.onLoadPictureByDate),
+                  Stack(
+                    children: [
+                      PictureTile(
+                        key: Key(widget.pictureViewModelList[0].date), // .id
+                        title: widget.pictureViewModelList[0].title,
+                        imageUrl: widget.pictureViewModelList[0].url,
+                        // CachedNetworkImageProvider(widget.pictureViewModelList[0].url),
+                        // CachedNetworkImageProvider(widget.pictureViewModelList[0].url),
+                        // CachedNetworkImageProvider(product.image),
+                        date: widget.pictureViewModelList[0].date,
+                        // aspectRatio: widget.pictureViewModelList[0].aspectRatio,
+                        onTap: () => widget
+                            .onViewProduct(widget.pictureViewModelList[0]),
+                      ),
+                      Positioned(
+                        right: 0,
+                        bottom: 0,
+                        child: Container(
+                          margin: AppEdgeInsets.semiSmall().toEdgeInsets(theme),
+                          height: theme.typography.title1.fontSize! * 1.3,
+                          width: theme.typography.title1.fontSize! * 1.3,
+                          alignment: Alignment.centerLeft,
+                          child: SvgPicture(theme.images.appLogo),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -170,8 +197,7 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
                         // CachedNetworkImageProvider(product.image),
                         date: pictureViewModel.date,
                         // aspectRatio: pictureViewModel.aspectRatio,
-                        onTap: () =>
-                            widget.onViewProduct(pictureViewModel.date),
+                        onTap: () => widget.onViewProduct(pictureViewModel),
                       ),
                     ),
               ],

@@ -107,10 +107,8 @@ class AppNotifiableBarLayout extends StatelessWidget {
         color: theme.colors.accent,
         boxShadow: [
           BoxShadow(
-            blurRadius: isOpened ? 30 : 0,
-            color: theme.colors.accent.withOpacity(
-              isOpened ? 0.5 : 0.0,
-            ),
+            blurRadius: isOpened ? 32 : 16,
+            color: theme.colors.accent.withOpacity(0.5),
           )
         ],
       ),

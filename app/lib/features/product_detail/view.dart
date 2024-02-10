@@ -33,7 +33,7 @@ class PictureDetailPageStateLoadedSuccessView extends StatelessWidget {
         //   child: const
 
         // );
-        ProductDetailLayout();
+        ProductDetailLayout(pictureViewModel: pictureViewModel);
   }
 }
 
@@ -47,7 +47,7 @@ class ProductDetailLayout extends StatelessWidget {
     super.key,
     this.pictureViewModel,
   });
-  
+
   final PictureViewModel? pictureViewModel;
 
   @override

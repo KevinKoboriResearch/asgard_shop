@@ -23,26 +23,27 @@ class PicturesPageHeader extends StatelessWidget {
           padding: EdgeInsets.all(
             theme.spacing.large,
           ),
-          child: 
-          // Expanded(
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     crossAxisAlignment: CrossAxisAlignment.center,
-          //     children: [
-          //       Container(
-          //         height: theme.typography.title1.fontSize,
-          //         width: theme.typography.title1.fontSize! * 1.5,
-          //         alignment: Alignment.centerLeft,
-          //         child: SvgPicture(theme.images.appLogo),
-          //       ),
-          //       AppGap.semiSmall(),
-                Container(
-                  // color: Colors.red,
-                  height: theme.typography.title1.fontSize,
-                  width: theme.typography.title1.fontSize! * 3,
-                  alignment: Alignment.centerLeft,
-                  child: SvgPicture(theme.images.appWarmLogo),
-                ),
+          child:
+              // Expanded(
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     crossAxisAlignment: CrossAxisAlignment.center,
+              //     children: [
+              //       Container(
+              //         height: theme.typography.title1.fontSize,
+              //         width: theme.typography.title1.fontSize! * 1.5,
+              //         alignment: Alignment.centerLeft,
+              //         child: SvgPicture(theme.images.appLogo),
+              //       ),
+              //       AppGap.semiSmall(),
+              Center(
+            child: SvgPicture(
+              theme.images.appWarmLogo,
+              height: theme.typography.title1.fontSize,
+              width: theme.typography.title1.fontSize! * 3,
+              // height: ,
+            ),
+          ),
           //       AppGap.big(),
           //       AppGap.semiBig(),
           //     ],
@@ -62,7 +63,7 @@ class PicturesPageHeader extends StatelessWidget {
               image: image,
               // image: theme.images.backgroundPattern,
               fit: BoxFit.cover,
-              opacity: 0.025 + 0.575 * scrollAmount,
+              opacity: 0.025 + 0.375 * scrollAmount,
             ),
           ),
           child: child,

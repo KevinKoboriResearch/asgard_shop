@@ -26,7 +26,7 @@ class TransparentPage<T> extends Page<T> {
       opaque: false,
       maintainState: true,
       settings: this,
-      barrierColor: theme.colors.foreground.withOpacity(0.5),
+      barrierColor: theme.colors.foreground.withOpacity(0.2),
       pageBuilder: (BuildContext context, Animation<double> animation,
           Animation<double> secondaryAnimation) {
         return AnimatedBuilder(

@@ -13,6 +13,8 @@ class AppBase extends StatelessWidget {
     required this.routerDelegate,
     required this.routeInformationParser,
     required this.appLogo,
+    // required this.routerConfig,
+
     this.darkAppLogo,
     required this.appWarmLogo,
     this.darkAppWarmLogo,

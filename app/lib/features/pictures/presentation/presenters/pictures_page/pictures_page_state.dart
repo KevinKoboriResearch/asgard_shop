@@ -2,6 +2,7 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 abstract class PicturesPageState {}
 
+class PicturesPageStateIdle extends PicturesPageState {}
 class PicturesPageStateLoading extends PicturesPageState {}
 
 class PicturesPageStateLoadedSuccess extends PicturesPageState {

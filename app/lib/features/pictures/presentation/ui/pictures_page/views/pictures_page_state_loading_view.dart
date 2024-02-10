@@ -20,26 +20,6 @@ class PicturesPageStateLoadingView extends StatelessWidget {
           theme.colorScheme.background.withOpacity(0),
       extendBodyBehindAppBar: true,
       extendBody: true,
-      appBar: AppBar(
-        // backgroundColor: theme.colorScheme.background.withOpacity(0.6),
-        // Colors.transparent,
-        // backgroundColor: ColorsUtils.background,
-        title: SizedBox(
-          height: 32,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: [
-              OutlinedButton(
-                onPressed: picturesPagePresenter.loadPictures,
-                child: const AppText('List all'),
-              ),
-              const AppGap.semiSmall(),
-              // TODO: NOW
-              // ApodDatePickerDialog(picturesPagePresenter),
-            ],
-          ),
-        ),
-      ),
       body: const Center(
         child: CircularProgressIndicator(),
       ),

@@ -7,22 +7,24 @@ class PicturesPageCubit extends Cubit<PicturesPageState>
     implements PicturesPagePresenter {
   final RemoteLoadLastTenDaysPicturesByDateUseCase
       loadLastTenDaysPicturesByDate;
+  List<PictureViewModel>? pictureViewModelList;
 
   PicturesPageCubit({
     required this.loadLastTenDaysPicturesByDate,
-  }) : super(PicturesPageStateLoading());
+  }) : super(PicturesPageStateIdle());
 
   @override
   void loadPictures() async {
     emit(PicturesPageStateLoading());
 
-    final loadpicturesResult = await _loadPictures();
-    loadpicturesResult.fold(
-      (domainFailure) =>
-          emit(PicturesPageStateLoadedFailure(domainFailure.toUIFailure)),
-      (pictureViewModelList) =>
-          emit(PicturesPageStateLoadedSuccess(pictureViewModelList)),
-    );
+    final loadPicturesResult = await _loadPictures();
+    loadPicturesResult.fold(
+        (domainFailure) =>
+            emit(PicturesPageStateLoadedFailure(domainFailure.toUIFailure)),
+        (pictureViewModelList) {
+      this.pictureViewModelList = pictureViewModelList;
+      emit(PicturesPageStateLoadedSuccess(this.pictureViewModelList!));
+    });
   }
 
   Future<Either<DomainFailure, List<PictureViewModel>>> _loadPictures() async {
@@ -44,16 +46,20 @@ class PicturesPageCubit extends Cubit<PicturesPageState>
   }
 
   @override
-  void loadPictureByDate(DateTime date) async {
+  void loadPictureByDate(BuildContext context, {required DateTime date}) async {
     emit(PicturesPageStateLoading());
 
     final loadPictureByDateResult = await _loadPictureByDate(date);
+
     loadPictureByDateResult.fold(
-      (domainFailure) =>
-          emit(PicturesPageStateLoadedFailure(domainFailure.toUIFailure)),
-      (pictureViewModelList) =>
-          emit(PicturesPageStateLoadedSuccess(pictureViewModelList)),
-    );
+        (domainFailure) =>
+            emit(PicturesPageStateLoadedFailure(domainFailure.toUIFailure)),
+        (pictureViewModelList) {
+      emit(PicturesPageStateLoadedSuccess(this.pictureViewModelList!));
+      final pictureViewModel = pictureViewModelList[0];
+      // GoRouter.of(context)
+      //     .push('/pictures/detail/${pictureViewModel.date}', extra: pictureViewModel);
+    });
   }
 
   Future<Either<DomainFailure, List<PictureViewModel>>> _loadPictureByDate(
@@ -61,6 +67,7 @@ class PicturesPageCubit extends Cubit<PicturesPageState>
     final datasource = PictureDatasourceImpl(httpClientAdapterFactory());
     final apodDate = DateTimeMapper.getStringFromDateTimeYMD(date);
     final result = await datasource.fetchByDate(apodApiUrlFactory(
+        // TODO: NOW - PUT IT IN .env
         apiKey: 'Ieuiin5UvhSz44qMh9rboqVMfOkYbkNebhwEtxPF',
         requestPath: '&date=$apodDate'));
     return result.fold(
@@ -79,6 +86,6 @@ class PicturesPageCubit extends Cubit<PicturesPageState>
   @override
   void pushToPictureDetails(String pictureDate,
       {required PictureViewModel pictureViewModel}) {
-    NavigatorManager.pushNamed('/$pictureDate', arguments: pictureViewModel);
+    NavigatorManager.pushNamed('picture/detail/$pictureDate', arguments: pictureViewModel);
   }
 }

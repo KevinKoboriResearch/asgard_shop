@@ -18,8 +18,10 @@ void main() {
         // Provider.value(value: CatalogState.demo()),
       ],
       child: CatalogMobileLayout(
-        onViewProduct: (id) {},
         pictureViewModelList: [],
+        onViewProduct: (id) {},
+        onLoadAllPicturesList: () {},
+        onLoadPictureByDate: (date) {},
       ),
     ),
   );

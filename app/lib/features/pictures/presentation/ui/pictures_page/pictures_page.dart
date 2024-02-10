@@ -29,17 +29,21 @@ class _PicturesPageState extends State<PicturesPage> {
         //   return PicturesPageStateLoadingView(
         //     picturesPagePresenter: widget.picturesPagePresenter,
         //   );
-        // } else if (state is PicturesPageStateLoadFailure) {
-        //   return PicturesPageStateLoadFailureView(
+        // } else if (state is PicturesPageStateLoadedFailure) {
+        //   return PicturesPageStateLoadedFailureView(
         //     failureMessage: state.failureMessage,
         //     reload: widget.picturesPagePresenter.loadPictures,
         //   );
-        // } else if (state is PicturesPageStateLoadSuccess) {
-        return PicturesPageStateLoadedSuccessView(
-          presenter: widget.picturesPagePresenter,
-          pictureViewModelList: mockList,
-          // state.pictureViewModelList,
-        );
+        // } else if (state is PicturesPageStateLoadedSuccess) {
+          return PicturesPageStateLoadedSuccessView(
+            presenter: widget.picturesPagePresenter,
+            pictureViewModelList:
+                 mockList,
+                // state.pictureViewModelList,
+            onLoadAllPicturesList: widget.picturesPagePresenter.loadPictures,
+            onLoadPictureByDate: (date) => widget.picturesPagePresenter
+                .loadPictureByDate(context, date: date),
+          );
         // } else {
         //   return const SizedBox.shrink();
         // }
