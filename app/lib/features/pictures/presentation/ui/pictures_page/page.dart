@@ -16,7 +16,7 @@ class PicturesPage extends StatefulWidget {
 class _PicturesPageState extends State<PicturesPage> {
   @override
   void initState() {
-    // widget.picturesPagePresenter.loadPictures();
+    widget.picturesPagePresenter.loadPictures();
     super.initState();
   }
 
@@ -25,28 +25,28 @@ class _PicturesPageState extends State<PicturesPage> {
     return BlocBuilder<PicturesPageCubit, PicturesPageState>(
       bloc: widget.picturesPagePresenter as PicturesPageCubit,
       builder: (context, state) {
-        // if (state is PicturesPageStateLoading) {
-        //   return PicturesPageStateLoadingView(
-        //     picturesPagePresenter: widget.picturesPagePresenter,
-        //   );
-        // } else if (state is PicturesPageStateLoadedFailure) {
-        //   return PicturesPageStateLoadedFailureView(
-        //     failureMessage: state.failureMessage,
-        //     reload: widget.picturesPagePresenter.loadPictures,
-        //   );
-        // } else if (state is PicturesPageStateLoadedSuccess) {
+        if (state is PicturesPageStateLoading) {
+          return PicturesPageStateLoadingView(
+            picturesPagePresenter: widget.picturesPagePresenter,
+          );
+        } else if (state is PicturesPageStateLoadedFailure) {
+          return PicturesPageStateLoadedFailureView(
+            failureMessage: state.failureMessage,
+            reload: widget.picturesPagePresenter.loadPictures,
+          );
+        } else if (state is PicturesPageStateLoadedSuccess) {
           return PicturesPageStateLoadedSuccessView(
             presenter: widget.picturesPagePresenter,
             pictureViewModelList:
-                 mockList,
-                // state.pictureViewModelList,
+                //  mockList,
+                state.pictureViewModelList,
             onLoadAllPicturesList: widget.picturesPagePresenter.loadPictures,
             onLoadPictureByDate: (date) => widget.picturesPagePresenter
                 .loadPictureByDate(context, date: date),
           );
-        // } else {
-        //   return const SizedBox.shrink();
-        // }
+        } else {
+          return const SizedBox.shrink();
+        }
       },
     );
   }

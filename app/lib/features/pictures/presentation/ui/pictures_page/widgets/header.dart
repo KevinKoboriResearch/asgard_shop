@@ -1,4 +1,3 @@
-import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -23,32 +22,13 @@ class PicturesPageHeader extends StatelessWidget {
           padding: EdgeInsets.all(
             theme.spacing.large,
           ),
-          child:
-              // Expanded(
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     children: [
-              //       Container(
-              //         height: theme.typography.title1.fontSize,
-              //         width: theme.typography.title1.fontSize! * 1.5,
-              //         alignment: Alignment.centerLeft,
-              //         child: SvgPicture(theme.images.appLogo),
-              //       ),
-              //       AppGap.semiSmall(),
-              Center(
+          child: Center(
             child: SvgPicture(
               theme.images.appWarmLogo,
               height: theme.typography.title1.fontSize,
               width: theme.typography.title1.fontSize! * 3,
-              // height: ,
             ),
           ),
-          //       AppGap.big(),
-          //       AppGap.semiBig(),
-          //     ],
-          //   ),
-          // ),
         ),
       ),
       builder: (context, child) {
@@ -61,7 +41,6 @@ class PicturesPageHeader extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: image,
-              // image: theme.images.backgroundPattern,
               fit: BoxFit.cover,
               opacity: 0.025 + 0.375 * scrollAmount,
             ),

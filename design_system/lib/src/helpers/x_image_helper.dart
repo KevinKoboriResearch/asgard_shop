@@ -14,17 +14,17 @@ abstract final class XImagesHelper {
   static Future<double> getImageAspectRatio(String imageUrl) async {
     final ImageStream imageStream =
         CachedNetworkImageProvider(imageUrl).resolve(ImageConfiguration.empty);
-    final Completer<double>? completer = Completer();
+    final Completer<double> completer = Completer();
 
     void imageListener(ImageInfo info, bool _) {
       final double aspectRatio = info.image.width / info.image.height;
-      completer?.complete(aspectRatio);
+      completer.complete(aspectRatio);
     }
 
     imageStream.addListener(
       ImageStreamListener(imageListener),
     );
 
-    return await completer?.future ?? 1;
+    return await completer.future ?? 1;
   }
 }

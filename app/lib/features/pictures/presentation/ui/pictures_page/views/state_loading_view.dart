@@ -12,14 +12,7 @@ class PicturesPageStateLoadingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return Scaffold(
-      backgroundColor:
-          //  Colors.transparent
-          theme.colorScheme.background.withOpacity(0),
-      extendBodyBehindAppBar: true,
-      extendBody: true,
+    return AppScaffold(
       body: const Center(
         child: CircularProgressIndicator(),
       ),

@@ -13,7 +13,7 @@ ThemeSection typography(BuildContext context) {
               final named = c as Named<TextStyle>;
               return NamedCell(
                 value: named,
-                builder: (context, TextStyle v, _) => Text(
+                builder: (context, v, _) => Text(
                   'Hello!',
                   style: named.value.copyWith(color: theme.colors.foreground),
                 ),

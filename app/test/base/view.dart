@@ -1,8 +1,8 @@
 import 'dart:math' as math;
 
-import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:test_utils/test_utils.dart';
 
 import 'devices.dart';

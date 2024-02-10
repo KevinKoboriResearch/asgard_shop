@@ -13,7 +13,7 @@ ThemeSection radius(BuildContext context) {
               final named = c as Named<Radius>;
               return NamedCell(
                 value: named,
-                builder: (context, Radius v, _) => Container(
+                builder: (context, v, _) => Container(
                   height: 48,
                   width: 48,
                   decoration: BoxDecoration(

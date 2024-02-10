@@ -2,10 +2,7 @@ import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class AppNavigationBar extends StatelessWidget {
   const AppNavigationBar({
-    super.key,
-    required this.leading,
-    required this.body,
-    required this.summary,
+    required this.leading, required this.body, required this.summary, super.key,
     this.canNavigateBack = false,
     this.animation,
     this.action,
@@ -138,8 +135,7 @@ class AppNavigationBar extends StatelessWidget {
 
 class NavigationBarContainer extends StatelessWidget {
   const NavigationBarContainer({
-    super.key,
-    required this.child,
+    required this.child, super.key,
   });
 
   final Widget child;

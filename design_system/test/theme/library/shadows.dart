@@ -13,7 +13,7 @@ ThemeSection shadow(BuildContext context) {
               final named = c as Named<BoxShadow>;
               return NamedCell(
                 value: named,
-                builder: (context, BoxShadow v, _) => Container(
+                builder: (context, v, _) => Container(
                   height: 48,
                   width: 48,
                   margin: const EdgeInsets.all(64),

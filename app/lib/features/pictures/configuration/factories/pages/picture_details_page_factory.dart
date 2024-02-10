@@ -1,5 +1,6 @@
-// import 'package:nasa_apod_core/nasa_apod_core.dart';
+import 'package:nasa_apod_app/nasa_apod_app.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 
-// StatefulWidget pictureDetailsFactory(String pictureDate,
-//         {PictureViewModel? pictureViewModel}) =>
-//     PictureDetailsPage(pictureDate, pictureViewModel: pictureViewModel);
+StatefulWidget pictureDetailPageFactory(String pictureDate,
+        {PictureViewModel? pictureViewModel}) =>
+    PictureDetailPage(pictureDate, pictureViewModel: pictureViewModel);

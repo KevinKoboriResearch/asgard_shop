@@ -2,21 +2,16 @@ import 'package:nasa_apod_app/services/services.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:equatable/equatable.dart';
 
-class CartState extends Equatable {
-  const CartState({
+class CollectionState extends Equatable {
+  const CollectionState({
     required this.items,
   });
 
-  final List<CartItem> items;
+  final List<CollectionItem> items;
 
-  int get totalPrice => items.fold(
-        0,
-        (total, item) => total + item.quantity * item.product.price,
-      );
-
-  factory CartState.demo() => const CartState(
+  factory CollectionState.demo() => const CollectionState(
         items: [
-          CartItem(
+          CollectionItem(
             quantity: 2,
             product: Product(
               id: '002',
@@ -28,7 +23,7 @@ class CartState extends Equatable {
               imageAspectRatio: 0.7,
             ),
           ),
-          CartItem(
+          CollectionItem(
             quantity: 1,
             product: Product(
               id: '003',
@@ -47,12 +42,12 @@ class CartState extends Equatable {
   List<Object?> get props => [items];
 }
 
-class CartNotifier extends ValueNotifier<CartState> {
-  CartNotifier.demo() : super(CartState.demo());
+class CollectionNotifier extends ValueNotifier<CollectionState> {
+  CollectionNotifier.demo() : super(CollectionState.demo());
 }
 
-class CartItem extends Equatable {
-  const CartItem({
+class CollectionItem extends Equatable {
+  const CollectionItem({
     required this.product,
     required this.quantity,
   });

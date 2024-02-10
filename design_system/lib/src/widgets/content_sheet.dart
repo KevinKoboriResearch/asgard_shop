@@ -1,11 +1,10 @@
-import 'package:nasa_apod_design_system/src/theme/theme.dart';
 import 'package:flutter/widgets.dart';
+import 'package:nasa_apod_design_system/src/theme/theme.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 class AppContentSheet extends StatelessWidget {
   const AppContentSheet({
-    super.key,
-    required this.children,
+    required this.children, super.key,
   });
 
   final List<Widget> children;
@@ -35,10 +34,9 @@ class AppContentSheet extends StatelessWidget {
             sliver: SliverStack(
               children: <Widget>[
                 SliverPositioned.fill(
-                  child: Container(
+                  child: DecoratedBox(
                     decoration: BoxDecoration(
-                      color: theme.colors.background,
-                      borderRadius: theme.radius.asBorderRadius().big,
+                      borderRadius: theme.radius.asBorderRadius().superLarge,
                     ),
                   ),
                 ),

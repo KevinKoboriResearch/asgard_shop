@@ -1,5 +1,5 @@
-import 'package:nasa_apod_design_system/src/theme/theme.dart';
 import 'package:flutter/widgets.dart';
+import 'package:nasa_apod_design_system/src/theme/theme.dart';
 
 enum AppIconSize {
   small,
@@ -96,7 +96,6 @@ class AppAnimatedIcon extends StatelessWidget {
       );
     }
     return AnimatedDefaultTextStyle(
-      child: Text(data),
       style: TextStyle(
         fontFamily: theme.icons.fontFamily,
         package: theme.icons.fontPackage,
@@ -105,6 +104,7 @@ class AppAnimatedIcon extends StatelessWidget {
         decoration: TextDecoration.none,
       ),
       duration: duration,
+      child: Text(data),
     );
   }
 }

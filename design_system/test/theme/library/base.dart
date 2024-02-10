@@ -1,12 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:nasa_apod_design_system/src/helpers/named.dart';
-import 'package:flutter/material.dart';
 
 class ThemeContainer extends StatelessWidget {
   const ThemeContainer({
-    super.key,
-    required this.title,
-    required this.sections,
+    required this.title, required this.sections, super.key,
   });
   final String title;
   final List<ThemeSection> sections;
@@ -32,9 +30,7 @@ class ThemeContainer extends StatelessWidget {
 
 class ThemeSection extends StatelessWidget {
   const ThemeSection({
-    super.key,
-    required this.title,
-    required this.categories,
+    required this.title, required this.categories, super.key,
   });
 
   final String title;
@@ -58,9 +54,7 @@ class ThemeSection extends StatelessWidget {
 
 class ThemeCategory extends StatelessWidget {
   const ThemeCategory({
-    super.key,
-    required this.title,
-    required this.children,
+    required this.title, required this.children, super.key,
   });
 
   final String title;
@@ -85,9 +79,7 @@ class ThemeCategory extends StatelessWidget {
 
 class SpacedColumn extends StatelessWidget {
   const SpacedColumn({
-    super.key,
-    required this.spaceBetween,
-    required this.children,
+    required this.spaceBetween, required this.children, super.key,
   });
 
   final double spaceBetween;
@@ -114,9 +106,7 @@ class SpacedColumn extends StatelessWidget {
 
 class NamedCell<T> extends StatelessWidget {
   const NamedCell({
-    super.key,
-    required this.value,
-    required this.builder,
+    required this.value, required this.builder, super.key,
   });
 
   final Named<T> value;

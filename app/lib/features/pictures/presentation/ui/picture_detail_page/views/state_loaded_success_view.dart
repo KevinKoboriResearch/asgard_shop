@@ -1,12 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:nasa_apod_app/base/state_provider.dart';
-import 'package:nasa_apod_app/features/product_detail/state.dart';
-import 'package:nasa_apod_app/services/services.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
-import 'package:provider/provider.dart';
 
-import 'widgets/navigation_bar.dart';
+import '../widgets/navigation_bar.dart';
 
 class PictureDetailPageStateLoadedSuccessView extends StatelessWidget {
   const PictureDetailPageStateLoadedSuccessView({
@@ -20,25 +16,11 @@ class PictureDetailPageStateLoadedSuccessView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-        // StateProvider<ProductDetailState, ProductDetailNotifier>(
-        //   create: (context) {
-        //     final product = context.read<CatalogState>().getProduct(productId);
-        //     return ProductDetailNotifier(
-        //       ProductDetailState(
-        //         product: pictureViewModel,
-        //       ),
-        //     );
-        //   },
-        //   child: const
-
-        // );
-        ProductDetailLayout(pictureViewModel: pictureViewModel);
+    return ProductDetailLayout(pictureViewModel: pictureViewModel);
   }
 }
 
 /// State dependencies :
-/// * [ProductDetailState]
 /// * [AccountState]
 /// * [NotificationsState]
 /// * [CartState]
@@ -53,11 +35,9 @@ class ProductDetailLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
-    // final product = context.select((ProductDetailState state) => state.product);
-
     return AppScaffold(
-      floatingBar: const ProductDetailNavigationBar(),
-      backgroundColor: theme.colors.background.withAlpha(0),
+      // TODO: NOW - TURN IT NON NULABLE??
+      backgroundImage: CachedNetworkImageProvider(pictureViewModel!.url),
       body: AppContentSheet(
         children: [
           if (pictureViewModel == null) const AppText.title2('Not found'),
@@ -65,6 +45,7 @@ class ProductDetailLayout extends StatelessWidget {
             ..._buildBody(context, theme, pictureViewModel!),
         ],
       ),
+      floatingBar: const PictureDetailNavigationBar(),
     );
   }
 

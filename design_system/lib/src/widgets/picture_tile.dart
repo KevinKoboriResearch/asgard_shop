@@ -1,11 +1,8 @@
-import 'dart:async';
-
-import 'package:flutter/foundation.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:tap_builder/tap_builder.dart';
-// import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 // class CustomImageProvider extends ImageProvider {
 //   final String imageUrl;
@@ -23,12 +20,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 class PictureTile extends StatefulWidget {
   const PictureTile({
-    super.key,
-    required this.title,
-    // required this.image,
-    required this.imageUrl,
-    required this.date,
-    required this.onTap,
+    required this.title, // required this.image,
+    required this.imageUrl, required this.date, required this.onTap, super.key,
     // this.aspectRatio = 1.0,
   });
 
@@ -112,18 +105,12 @@ enum ProductTileState {
 
 class ProductTileLayout extends StatelessWidget {
   const ProductTileLayout.idle({
-    super.key,
-    required this.title,
-    required this.image,
-    required this.date,
+    required this.title, required this.image, required this.date, super.key,
     this.aspectRatio = 1.0,
   }) : _state = ProductTileState.idle;
 
   const ProductTileLayout.hovered({
-    super.key,
-    required this.title,
-    required this.image,
-    required this.date,
+    required this.title, required this.image, required this.date, super.key,
     this.aspectRatio = 1.0,
   }) : _state = ProductTileState.hovered;
 
@@ -169,7 +156,7 @@ class ProductTileLayout extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Expanded(
-                  child: Container(
+                  child: DecoratedBox(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
@@ -213,16 +200,16 @@ class ProductTileLayout extends StatelessWidget {
 Future<double> getImageAspectRatio(String imageUrl) async {
   final ImageStream imageStream =
       CachedNetworkImageProvider(imageUrl).resolve(ImageConfiguration.empty);
-  final Completer<double>? completer = Completer();
+  final Completer<double> completer = Completer();
 
   void imageListener(ImageInfo info, bool _) {
     final double aspectRatio = info.image.width / info.image.height;
-    completer?.complete(aspectRatio);
+    completer.complete(aspectRatio);
   }
 
   imageStream.addListener(
     ImageStreamListener(imageListener),
   );
 
-  return await completer?.future ?? 1;
+  return await completer.future ?? 1;
 }

@@ -13,7 +13,7 @@ ThemeSection colors(BuildContext context) {
               final named = c as Named<Color>;
               return NamedCell(
                 value: named,
-                builder: (context, Color v, _) => Container(
+                builder: (context, v, _) => Container(
                   height: 32,
                   width: 32,
                   padding: const EdgeInsets.all(4),

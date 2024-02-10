@@ -1,11 +1,11 @@
 import 'package:nasa_apod_app/features/account/widget/avatar.dart';
-import 'package:nasa_apod_app/features/cart/widget/overview.dart';
-import 'package:nasa_apod_app/features/pictures/presentation/ui/pictures_page/widgets/pictures_page_navigation_bar.dart';
+import 'package:nasa_apod_app/features/collection/widget/overview.dart';
+import 'package:nasa_apod_app/features/pictures/presentation/ui/pictures_page/widgets/navigation_bar.dart';
 import 'package:nasa_apod_app/features/notifications/widgets/notification_bar.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-class ProductDetailNavigationBar extends StatelessWidget {
-  const ProductDetailNavigationBar({
+class PictureDetailNavigationBar extends StatelessWidget {
+  const PictureDetailNavigationBar({
     super.key,
   });
 
@@ -19,10 +19,10 @@ class ProductDetailNavigationBar extends StatelessWidget {
         canNavigateBack: true,
         leading: const CurrentUserAvatar(),
         body: const CurrentUserAccount(),
-        summary: const CartOverview(),
+        summary: const CollectionOverview(),
         action: AppButton(
           icon: theme.icons.characters.addProduct,
-          title: 'Add to cart',
+          title: 'collections',
           onTap: () {},
         ),
       ),

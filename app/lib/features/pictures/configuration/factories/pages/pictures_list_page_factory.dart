@@ -1,7 +1,6 @@
-// import 'package:nasa_apod_core/nasa_apod_core.dart';
+import 'package:nasa_apod_app/nasa_apod_app.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 
-// StatefulWidget picturesListPageFactory() => PicturesPage(
-//       // picturesPresenterFactory()
-//       // final picturesPagePresenter = Modular.get<PicturesCubit>();
-//       picturesPagePresenter: picturesPresenterFactory(),
-//     );
+StatefulWidget picturesPageFactory() => PicturesPage(
+      picturesPagePresenter: picturesPagePresenterFactory(),
+    );

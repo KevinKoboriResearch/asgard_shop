@@ -1,11 +1,10 @@
-import 'package:nasa_apod_design_system/src/theme/theme.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:nasa_apod_design_system/src/theme/theme.dart';
 
 class AppTileSliverGrid extends StatelessWidget {
   const AppTileSliverGrid({
-    super.key,
-    required this.children,
+    required this.children, super.key,
     this.crossAxisCount = 2,
     this.padding,
   });

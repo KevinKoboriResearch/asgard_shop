@@ -1,5 +1,5 @@
-import 'package:nasa_apod_design_system/src/helpers/named.dart';
 import 'package:equatable/equatable.dart';
+import 'package:nasa_apod_design_system/src/helpers/named.dart';
 
 class AppDurationsData extends Equatable {
   const AppDurationsData({

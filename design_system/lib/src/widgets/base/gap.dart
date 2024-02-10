@@ -1,6 +1,6 @@
-import 'package:nasa_apod_design_system/src/theme/theme.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:nasa_apod_design_system/src/theme/theme.dart';
 
 enum AppGapSize {
   none,

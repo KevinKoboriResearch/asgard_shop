@@ -13,7 +13,7 @@ ThemeSection spacing(BuildContext context) {
               final named = c as Named<double>;
               return NamedCell(
                 value: named,
-                builder: (context, double v, _) => Container(
+                builder: (context, v, _) => Container(
                   height: 24,
                   width: v,
                   color: theme.colors.accent,

@@ -11,8 +11,8 @@ ThemeSection icons(BuildContext context) {
         children: [
           ...icons.characters.props.map<Widget>(
             (c) => NamedCell(
-              value: (c as Named<String>),
-              builder: (context, String v, _) => AppIcon(
+              value: c as Named<String>,
+              builder: (context, v, _) => AppIcon(
                 v,
                 color: theme.colors.foreground,
                 size: AppIconSize.small,
@@ -26,8 +26,8 @@ ThemeSection icons(BuildContext context) {
         children: [
           ...icons.characters.props.map<Widget>(
             (c) => NamedCell(
-              value: (c as Named<String>),
-              builder: (context, String v, _) => AppIcon(
+              value: c as Named<String>,
+              builder: (context, v, _) => AppIcon(
                 v,
                 color: theme.colors.foreground,
                 size: AppIconSize.regular,

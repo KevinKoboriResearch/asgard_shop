@@ -1,11 +1,11 @@
 import 'dart:ui' as ui;
 
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_design_system/src/theme/data/form_factor.dart';
 import 'package:nasa_apod_design_system/src/theme/data/images.dart';
 import 'package:nasa_apod_design_system/src/theme/data/typography.dart';
 import 'package:nasa_apod_design_system/src/theme/theme.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 enum AppThemeColorMode {
   light,
@@ -17,11 +17,11 @@ enum AppThemeColorMode {
 /// as soon as the [theme] isn't overriden.
 class AppResponsiveTheme extends StatelessWidget {
   const AppResponsiveTheme({
-    super.key,
     required this.appLogo,
-    this.darkAppLogo,
     required this.child,
     required this.appWarmLogo,
+    super.key,
+    this.darkAppLogo,
     this.darkAppWarmLogo,
     this.colorMode,
     this.formFactor,
@@ -91,7 +91,7 @@ class AppResponsiveTheme extends StatelessWidget {
     }
 
     // Updating the sizes for current form factor.
-    var formFactor = this.formFactor ?? formFactorOf(context);
+    final formFactor = this.formFactor ?? formFactorOf(context);
     theme = theme.withFormFactor(formFactor);
     if (formFactor == AppFormFactor.small) {
       theme = theme.withTypography(AppTypographyData.small());

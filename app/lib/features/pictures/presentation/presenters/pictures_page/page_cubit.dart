@@ -56,9 +56,6 @@ class PicturesPageCubit extends Cubit<PicturesPageState>
             emit(PicturesPageStateLoadedFailure(domainFailure.toUIFailure)),
         (pictureViewModelList) {
       emit(PicturesPageStateLoadedSuccess(this.pictureViewModelList!));
-      final pictureViewModel = pictureViewModelList[0];
-      // GoRouter.of(context)
-      //     .push('/pictures/detail/${pictureViewModel.date}', extra: pictureViewModel);
     });
   }
 
@@ -86,6 +83,7 @@ class PicturesPageCubit extends Cubit<PicturesPageState>
   @override
   void pushToPictureDetails(String pictureDate,
       {required PictureViewModel pictureViewModel}) {
-    NavigatorManager.pushNamed('picture/detail/$pictureDate', arguments: pictureViewModel);
+    NavigatorManager.pushNamed('picture/detail/$pictureDate',
+        arguments: pictureViewModel);
   }
 }

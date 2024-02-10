@@ -1,5 +1,5 @@
 import 'package:nasa_apod_app/features/account/widget/avatar.dart';
-import 'package:nasa_apod_app/features/cart/widget/overview.dart';
+import 'package:nasa_apod_app/features/collection/widget/overview.dart';
 import 'package:nasa_apod_app/features/notifications/widgets/notification_bar.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
@@ -13,7 +13,7 @@ class PicturesPageNavigationBar extends StatelessWidget {
     return const NotificationBar(
       child: AppNavigationBar(
         leading: CurrentUserAvatar(),
-        summary: CartOverview(),
+        summary: CollectionOverview(),
         body: CurrentUserAccount(),
       ),
     );

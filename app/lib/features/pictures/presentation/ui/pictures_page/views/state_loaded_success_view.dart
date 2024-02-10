@@ -6,8 +6,9 @@ import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-import '../widgets/pictures_page_header.dart';
-import '../widgets/pictures_page_navigation_bar.dart';
+import '../widgets/header.dart';
+import '../widgets/navigation_bar.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class PicturesPageStateLoadedSuccessView extends StatelessWidget {
   const PicturesPageStateLoadedSuccessView({
@@ -30,8 +31,10 @@ class PicturesPageStateLoadedSuccessView extends StatelessWidget {
       onLoadAllPicturesList: onLoadAllPicturesList,
       onLoadPictureByDate: onLoadPictureByDate,
       onViewProduct: (pictureViewModel) {
-        // GoRouter.of(context)
-        //     .push('/pictures/detail/${pictureViewModel.date}', extra: pictureViewModel);
+        Modular.to.pushNamed(
+          '/picture/detail/${pictureViewModel.date}',
+          arguments: pictureViewModel,
+        );
       },
     );
   }
@@ -58,10 +61,9 @@ class CatalogMobileLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final products = context.select((CatalogState state) => state.products);
     return AppScaffold(
+      backgroundImage: CachedNetworkImageProvider(pictureViewModelList[1].url),
       body: _BodyWithProducts(
-        // products: products,
         pictureViewModelList: pictureViewModelList,
         onLoadAllPicturesList: onLoadAllPicturesList,
         onLoadPictureByDate: onLoadPictureByDate,
@@ -74,7 +76,6 @@ class CatalogMobileLayout extends StatelessWidget {
 
 class _BodyWithProducts extends StatefulWidget {
   const _BodyWithProducts({
-    super.key,
     required this.pictureViewModelList,
     required this.onViewProduct,
     required this.onLoadAllPicturesList,
@@ -115,13 +116,13 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
             ),
           ),
           SliverToBoxAdapter(
-            child: AppPadding(
-              padding: const AppEdgeInsets.only(
+            child: Container(
+              padding: AppEdgeInsets.only(
                 left: AppGapSize.large,
                 top: AppGapSize.large,
                 right: AppGapSize.large,
                 bottom: AppGapSize.none,
-              ),
+              ).toEdgeInsets(theme),
               child: Column(
                 children: [
                   OutlinedButton(
@@ -137,9 +138,6 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
                         key: Key(widget.pictureViewModelList[0].date), // .id
                         title: widget.pictureViewModelList[0].title,
                         imageUrl: widget.pictureViewModelList[0].url,
-                        // CachedNetworkImageProvider(widget.pictureViewModelList[0].url),
-                        // CachedNetworkImageProvider(widget.pictureViewModelList[0].url),
-                        // CachedNetworkImageProvider(product.image),
                         date: widget.pictureViewModelList[0].date,
                         // aspectRatio: widget.pictureViewModelList[0].aspectRatio,
                         onTap: () => widget
