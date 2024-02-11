@@ -1,17 +1,16 @@
 import 'package:nasa_apod_core/nasa_apod_core.dart';
-import 'package:equatable/equatable.dart';
 
-class CollectionState extends Equatable {
-  const CollectionState({
-    required this.items,
-  });
+abstract class CollectionOverviewState {}
 
-  final List<CollectionItem> items;
+class CollectionOverviewStateLoadedData extends CollectionOverviewState {
+  final List<CollectionItemModel> items;
 
-  factory CollectionState.demo() => CollectionState(
+  CollectionOverviewStateLoadedData({required this.items});
+
+  factory CollectionOverviewStateLoadedData.demo() => CollectionOverviewStateLoadedData(
         items: [
-          CollectionItem(
-            quantity: 2,
+          CollectionItemModel(
+            collectionName: 'Moon',
             picture: PictureModel(
               copyright: 'copyright',
               date: DateTime.parse('2024-01-01'),
@@ -24,8 +23,8 @@ class CollectionState extends Equatable {
                   'https://apod.nasa.gov/apod/image/2402/Tadpoles2048original.png',
             ),
           ),
-          CollectionItem(
-            quantity: 1,
+          CollectionItemModel(
+            collectionName: 'Galaxies',
             picture: PictureModel(
               copyright: 'copyright',
               date: DateTime.parse('2024-01-01'),
@@ -40,23 +39,4 @@ class CollectionState extends Equatable {
           ),
         ],
       );
-
-  @override
-  List<Object?> get props => [items];
-}
-
-class CollectionNotifier extends ValueNotifier<CollectionState> {
-  CollectionNotifier.demo() : super(CollectionState.demo());
-}
-
-class CollectionItem extends Equatable {
-  const CollectionItem({
-    required this.picture,
-    required this.quantity,
-  });
-  final PictureModel picture;
-  final int quantity;
-
-  @override
-  List<Object?> get props => [picture, quantity];
 }

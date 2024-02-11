@@ -1,5 +1,5 @@
 import 'package:nasa_apod_app/features/account/state.dart';
-import 'package:nasa_apod_app/features/collection/state.dart';
+import 'package:nasa_apod_app/features/collection/presenter/overview_state.dart';
 import 'package:nasa_apod_app/features/pictures/presentation/ui/pictures_page/views/state_loaded_success_view.dart';
 import 'package:nasa_apod_app/features/notifications/state.dart';
 import 'package:provider/provider.dart';

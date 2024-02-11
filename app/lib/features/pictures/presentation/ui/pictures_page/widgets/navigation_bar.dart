@@ -1,6 +1,6 @@
 import 'package:nasa_apod_app/features/account/state.dart';
 import 'package:nasa_apod_app/features/account/widget/avatar.dart';
-import 'package:nasa_apod_app/features/collection/widget/overview.dart';
+import 'package:nasa_apod_app/features/collection/ui/widget/overview.dart';
 import 'package:nasa_apod_app/features/notifications/widgets/notification_bar.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 import 'package:provider/provider.dart';
