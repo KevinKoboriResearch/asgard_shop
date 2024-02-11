@@ -3,12 +3,12 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 abstract class CollectionOverviewState {}
 
 class CollectionOverviewStateLoadedData extends CollectionOverviewState {
-  final List<CollectionItemModel> items;
+  final List<CollectionItemModel> collectionList;
 
-  CollectionOverviewStateLoadedData({required this.items});
+  CollectionOverviewStateLoadedData({required this.collectionList});
 
   factory CollectionOverviewStateLoadedData.demo() => CollectionOverviewStateLoadedData(
-        items: [
+        collectionList: [
           CollectionItemModel(
             collectionName: 'Moon',
             picture: PictureModel(

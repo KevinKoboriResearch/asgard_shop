@@ -1,9 +1,10 @@
-import 'package:nasa_apod_app/features/account/state.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_apod_app/features/account/widget/avatar.dart';
 import 'package:nasa_apod_app/features/collection/ui/widget/overview.dart';
 import 'package:nasa_apod_app/features/notifications/widgets/notification_bar.dart';
+import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
-import 'package:provider/provider.dart';
 
 class PicturesPageNavigationBar extends StatelessWidget {
   const PicturesPageNavigationBar({
@@ -30,21 +31,28 @@ class CurrentUserAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
-    final name = context.select((AccountState state) => state.name);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        AppText.paragraph1(
-          'Account',
-          color: theme.colors.actionBarForeground,
-        ),
-        AppText.title3(
-          name,
-          color: theme.colors.actionBarForeground,
-        ),
-      ],
+    return BlocBuilder<AccountOverviewBloc, AccountOverviewState>(
+      builder: (context, state) {
+        if (state is AccountOverviewStateLoadedData) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AppText.paragraph1(
+                'Account',
+                color: theme.colors.actionBarForeground,
+              ),
+              AppText.title3(
+                state.account.name,
+                color: theme.colors.actionBarForeground,
+              ),
+            ],
+          );
+        } else {
+          return CircularProgressIndicator();
+        }
+      },
     );
   }
 }

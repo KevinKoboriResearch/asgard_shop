@@ -1,6 +1,6 @@
-import 'package:nasa_apod_app/features/account/state.dart';
-import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nasa_apod_app/nasa_apod_app.dart';
 
 class CurrentUserAvatar extends StatelessWidget {
   const CurrentUserAvatar({
@@ -9,9 +9,16 @@ class CurrentUserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final url = context.select((AccountState state) => state.picture);
-    return UserAvatar(
-      url: url,
+    return BlocBuilder<AccountOverviewBloc, AccountOverviewState>(
+      builder: (context, state) {
+        if (state is AccountOverviewStateLoadedData) {
+          return UserAvatar(
+            url: state.account.pictureUrl,
+          );
+        } else {
+          return CircularProgressIndicator();
+        }
+      },
     );
   }
 }

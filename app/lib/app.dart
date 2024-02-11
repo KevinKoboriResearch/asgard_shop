@@ -1,12 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_app/base/state_provider.dart';
-import 'package:nasa_apod_app/features/account/state.dart';
-import 'package:nasa_apod_app/features/collection/presenter/overview_state.dart';
 import 'package:nasa_apod_app/features/notifications/state.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 class App extends StatelessWidget {
   App({
@@ -21,8 +19,8 @@ class App extends StatelessWidget {
         create: (context) => NotificationsNotifier.demo(),
         child: BlocProvider(
           create: (context) => CollectionOverviewBloc(),
-          child: StateProvider<AccountState, AccountNotifier>(
-            create: (context) => AccountNotifier.demo(),
+          child: BlocProvider(
+            create: (context) => AccountOverviewBloc(),
             child: AppBase(
               debugShowCheckedModeBanner: false,
               colorMode: AppThemeColorMode.dark,
