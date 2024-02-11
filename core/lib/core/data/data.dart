@@ -6,5 +6,6 @@ export 'mappers/date_time_mapper.dart';
 export 'mappers/picture_mapper.dart';
 export 'models/account_model.dart';
 export 'models/collection_item_model.dart';
+export 'models/notification_model.dart';
 export 'models/picture_model.dart';
 export 'repositories/picture_repository_impl.dart';
