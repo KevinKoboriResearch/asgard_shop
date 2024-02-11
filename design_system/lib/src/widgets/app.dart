@@ -87,7 +87,7 @@ class AppBase extends StatelessWidget {
     final theme = AppTheme.of(context);
     return AppButton(
       onTap: onPressed,
-      icon: theme.icons.characters.addProduct,
+      icon: theme.icons.characters.addPicture,
     );
   }
 

@@ -1,6 +1,6 @@
-export 'presenters/pictures_page/page_cubit.dart';
-export 'presenters/pictures_page/page_presenter.dart';
-export 'presenters/pictures_page/page_state.dart';
+export 'presenters/pictures/page_cubit.dart';
+export 'presenters/pictures/page_presenter.dart';
+export 'presenters/pictures/page_state.dart';
 export 'ui/picture_detail_page/page.dart';
 export 'ui/pictures_page/page.dart';
 export 'ui/pictures_page/views/state_loaded_failure_view.dart';

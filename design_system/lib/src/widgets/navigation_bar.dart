@@ -2,7 +2,10 @@ import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class AppNavigationBar extends StatelessWidget {
   const AppNavigationBar({
-    required this.leading, required this.body, required this.summary, super.key,
+    required this.leading,
+    required this.body,
+    required this.summary,
+    super.key,
     this.canNavigateBack = false,
     this.animation,
     this.action,
@@ -70,7 +73,7 @@ class AppNavigationBar extends StatelessWidget {
             children: [
               SlideTransition(
                 position: Tween(
-                  begin: const Offset(0, 0),
+                  begin: Offset.zero,
                   end: const Offset(-1, 0),
                 ).animate(animation),
                 child: FadeTransition(
@@ -135,7 +138,8 @@ class AppNavigationBar extends StatelessWidget {
 
 class NavigationBarContainer extends StatelessWidget {
   const NavigationBarContainer({
-    required this.child, super.key,
+    required this.child,
+    super.key,
   });
 
   final Widget child;
@@ -146,7 +150,6 @@ class NavigationBarContainer extends StatelessWidget {
     return AppContainer(
       padding: const AppEdgeInsets.semiSmall(),
       decoration: BoxDecoration(
-        color: theme.colors.actionBarBackground,
         borderRadius: theme.radius.asBorderRadius().regular,
       ),
       child: child,

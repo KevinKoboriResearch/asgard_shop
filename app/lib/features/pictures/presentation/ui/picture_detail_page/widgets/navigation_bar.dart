@@ -21,8 +21,9 @@ class PictureDetailNavigationBar extends StatelessWidget {
         body: const CurrentUserAccount(),
         summary: const CollectionOverview(),
         action: AppButton(
-          icon: theme.icons.characters.addProduct,
-          title: 'collections',
+          // TODO: NOW - CHANGE THIS NAME
+          icon: theme.icons.characters.addPicture,
+          title: 'Add to collections',
           onTap: () {},
         ),
       ),

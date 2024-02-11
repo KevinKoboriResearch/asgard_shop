@@ -6,14 +6,16 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class PictureDetailPage extends StatefulWidget {
-  final String pictureDate;
-  final PictureViewModel? pictureViewModel;
-
-  const PictureDetailPage(
-    this.pictureDate, {
+  const PictureDetailPage({
+    required this.aspectRatio,
+    required this.pictureDate,
     required this.pictureViewModel,
     super.key,
   });
+
+  final double aspectRatio;
+  final String pictureDate;
+  final PictureViewModel? pictureViewModel;
 
   @override
   State<PictureDetailPage> createState() => _PictureDetailPageState();
@@ -65,6 +67,7 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
         // TODO: NOW
         final picture = widget.pictureViewModel ?? pictureViewModel;
         return PictureDetailPageStateLoadedSuccessView(
+          aspectRatio: widget.aspectRatio,
           pictureDate: widget.pictureDate,
           pictureViewModel: picture,
         );

@@ -33,7 +33,7 @@ class AppIconsData extends Equatable {
 
 class AppIconCharactersData extends Equatable {
   const AppIconCharactersData({
-    required this.addProduct,
+    required this.addPicture,
     required this.arrowBack,
     required this.dismiss,
     required this.options,
@@ -43,7 +43,7 @@ class AppIconCharactersData extends Equatable {
   });
 
   factory AppIconCharactersData.regular() => AppIconCharactersData(
-        addProduct: String.fromCharCodes([57344, 58343, 58413, 57568]),
+        addPicture: String.fromCharCodes([57344, 58343, 58413, 57568]),
         arrowBack: String.fromCharCodes([57344, 58537, 59260, 57572]),
         dismiss: String.fromCharCodes([57344, 57911, 61195, 57514]),
         options: String.fromCharCodes([58088, 58314, 57452]),
@@ -52,7 +52,7 @@ class AppIconCharactersData extends Equatable {
         shoppingCart: String.fromCharCodes([57344, 58580, 57759, 57350]),
       );
 
-  final String addProduct;
+  final String addPicture;
   final String arrowBack;
   final String dismiss;
   final String options;
@@ -62,7 +62,7 @@ class AppIconCharactersData extends Equatable {
 
   @override
   List<Object?> get props => [
-        addProduct.named('addProduct'),
+        addPicture.named('addPicture'),
         arrowBack.named('arrowBack'),
         dismiss.named('dismiss'),
         tag.named('tag'),

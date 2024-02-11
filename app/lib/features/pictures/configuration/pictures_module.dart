@@ -7,9 +7,10 @@ class PicturesModule extends Module {
     r.child('/', child: (_) => picturesPageFactory());
 
     r.child(
-      '/picture/detail/:pictureDate',
+      '/picture/detail/:pictureDate/:aspectRatio',
       child: (context) => pictureDetailPageFactory(
-        r.args.params['pictureDate']!,
+        aspectRatio: double.parse(r.args.params['aspectRatio']!),
+        pictureDate: r.args.params['pictureDate']!,
         pictureViewModel: r.args.data,
       ),
     );

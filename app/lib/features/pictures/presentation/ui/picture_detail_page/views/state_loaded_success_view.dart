@@ -7,16 +7,18 @@ import '../widgets/navigation_bar.dart';
 class PictureDetailPageStateLoadedSuccessView extends StatelessWidget {
   const PictureDetailPageStateLoadedSuccessView({
     super.key,
+    required this.aspectRatio,
     required this.pictureDate,
     this.pictureViewModel,
   });
 
+  final double aspectRatio;
   final String pictureDate;
   final PictureViewModel? pictureViewModel;
 
   @override
   Widget build(BuildContext context) {
-    return ProductDetailLayout(pictureViewModel: pictureViewModel);
+    return PictureDetailLayout(pictureViewModel: pictureViewModel);
   }
 }
 
@@ -24,8 +26,8 @@ class PictureDetailPageStateLoadedSuccessView extends StatelessWidget {
 /// * [AccountState]
 /// * [NotificationsState]
 /// * [CartState]
-class ProductDetailLayout extends StatelessWidget {
-  const ProductDetailLayout({
+class PictureDetailLayout extends StatelessWidget {
+  const PictureDetailLayout({
     super.key,
     this.pictureViewModel,
   });
@@ -50,7 +52,7 @@ class ProductDetailLayout extends StatelessWidget {
   }
 
   List<Widget> _buildBody(
-      BuildContext context, AppThemeData theme, PictureViewModel product) {
+      BuildContext context, AppThemeData theme, PictureViewModel picture) {
     return [
       ClipRRect(
         borderRadius: theme.radius.asBorderRadius().regular,
@@ -59,17 +61,17 @@ class ProductDetailLayout extends StatelessWidget {
           child: Image(
             fit: BoxFit.cover,
             image: CachedNetworkImageProvider(
-              product.url,
+              picture.url,
             ),
           ),
         ),
       ),
-      AppText.title1(product.title),
+      AppText.title1(picture.title),
       AppText.title3(
-        product.date,
+        picture.date,
         color: theme.colors.accent,
       ),
-      AppText.paragraph1(product.explanation),
+      AppText.paragraph1(picture.explanation),
       const SizedBox(
         height: 100,
       ),

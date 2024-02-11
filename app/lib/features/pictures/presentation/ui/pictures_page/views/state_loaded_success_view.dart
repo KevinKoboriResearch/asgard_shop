@@ -13,13 +13,13 @@ import 'package:flutter_modular/flutter_modular.dart';
 class PicturesPageStateLoadedSuccessView extends StatelessWidget {
   const PicturesPageStateLoadedSuccessView({
     super.key,
-    required this.presenter,
+    required this.pagePresenter,
     required this.pictureViewModelList,
     required this.onLoadAllPicturesList,
     required this.onLoadPictureByDate,
   });
 
-  final PicturesPagePresenter presenter;
+  final PicturesPagePresenter pagePresenter;
   final List<PictureViewModel> pictureViewModelList;
   final VoidCallback onLoadAllPicturesList;
   final ValueChanged<DateTime> onLoadPictureByDate;
@@ -30,9 +30,9 @@ class PicturesPageStateLoadedSuccessView extends StatelessWidget {
       pictureViewModelList: pictureViewModelList,
       onLoadAllPicturesList: onLoadAllPicturesList,
       onLoadPictureByDate: onLoadPictureByDate,
-      onViewProduct: (pictureViewModel) {
+      onViewPictureDetail: (aspectRatio, pictureViewModel) {
         Modular.to.pushNamed(
-          '/picture/detail/${pictureViewModel.date}',
+          '/picture/detail/${pictureViewModel.date}/${aspectRatio.toString()}',
           arguments: pictureViewModel,
         );
       },
@@ -49,13 +49,13 @@ class CatalogMobileLayout extends StatelessWidget {
   const CatalogMobileLayout({
     super.key,
     required this.pictureViewModelList,
-    required this.onViewProduct,
+    required this.onViewPictureDetail,
     required this.onLoadAllPicturesList,
     required this.onLoadPictureByDate,
   });
 
   final List<PictureViewModel> pictureViewModelList;
-  final ValueChanged<PictureViewModel> onViewProduct;
+  final void Function(double, PictureViewModel) onViewPictureDetail;
   final VoidCallback onLoadAllPicturesList;
   final ValueChanged<DateTime> onLoadPictureByDate;
 
@@ -67,7 +67,7 @@ class CatalogMobileLayout extends StatelessWidget {
         pictureViewModelList: pictureViewModelList,
         onLoadAllPicturesList: onLoadAllPicturesList,
         onLoadPictureByDate: onLoadPictureByDate,
-        onViewProduct: onViewProduct,
+        onViewPictureDetail: onViewPictureDetail,
       ),
       floatingBar: const PicturesPageNavigationBar(),
     );
@@ -77,13 +77,13 @@ class CatalogMobileLayout extends StatelessWidget {
 class _BodyWithProducts extends StatefulWidget {
   const _BodyWithProducts({
     required this.pictureViewModelList,
-    required this.onViewProduct,
+    required this.onViewPictureDetail,
     required this.onLoadAllPicturesList,
     required this.onLoadPictureByDate,
   });
 
   final List<PictureViewModel> pictureViewModelList;
-  final ValueChanged<PictureViewModel> onViewProduct;
+  final void Function(double, PictureViewModel) onViewPictureDetail;
   final VoidCallback onLoadAllPicturesList;
   final ValueChanged<DateTime> onLoadPictureByDate;
 
@@ -129,19 +129,18 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
                     onPressed: () => widget.onLoadAllPicturesList,
                     child: const Text('List all'),
                   ),
-                  // const XGap.medium(),
                   ApodDatePickerDialog(
                       onLoadPictureByDate: widget.onLoadPictureByDate),
                   Stack(
                     children: [
                       PictureTile(
-                        key: Key(widget.pictureViewModelList[0].date), // .id
+                        key: Key(widget.pictureViewModelList[0].date),
                         title: widget.pictureViewModelList[0].title,
                         imageUrl: widget.pictureViewModelList[0].url,
                         date: widget.pictureViewModelList[0].date,
                         // aspectRatio: widget.pictureViewModelList[0].aspectRatio,
-                        onTap: () => widget
-                            .onViewProduct(widget.pictureViewModelList[0]),
+                        onTap: () => widget.onViewPictureDetail(
+                            1, widget.pictureViewModelList[0]),
                       ),
                       Positioned(
                         right: 0,
@@ -190,12 +189,10 @@ class _BodyWithProductsState extends State<_BodyWithProducts> {
                         key: Key(pictureViewModel.date), // .id
                         title: pictureViewModel.title,
                         imageUrl: pictureViewModel.url,
-                        // CachedNetworkImageProvider(pictureViewModel.url),
-                        // CachedNetworkImageProvider(pictureViewModel.url),
-                        // CachedNetworkImageProvider(product.image),
                         date: pictureViewModel.date,
                         // aspectRatio: pictureViewModel.aspectRatio,
-                        onTap: () => widget.onViewProduct(pictureViewModel),
+                        onTap: () =>
+                            widget.onViewPictureDetail(1, pictureViewModel),
                       ),
                     ),
               ],

@@ -3,9 +3,9 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 
 class PicturesPage extends StatefulWidget {
-  final PicturesPagePresenter picturesPagePresenter;
+  final PicturesPagePresenter pagePresenter;
   const PicturesPage({
-    required this.picturesPagePresenter,
+    required this.pagePresenter,
     super.key,
   });
 
@@ -16,32 +16,32 @@ class PicturesPage extends StatefulWidget {
 class _PicturesPageState extends State<PicturesPage> {
   @override
   void initState() {
-    widget.picturesPagePresenter.loadPictures();
+    widget.pagePresenter.loadPictures();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PicturesPageCubit, PicturesPageState>(
-      bloc: widget.picturesPagePresenter as PicturesPageCubit,
+      bloc: widget.pagePresenter as PicturesPageCubit,
       builder: (context, state) {
         if (state is PicturesPageStateLoading) {
           return PicturesPageStateLoadingView(
-            picturesPagePresenter: widget.picturesPagePresenter,
+            pagePresenter: widget.pagePresenter,
           );
         } else if (state is PicturesPageStateLoadedFailure) {
           return PicturesPageStateLoadedFailureView(
             failureMessage: state.failureMessage,
-            reload: widget.picturesPagePresenter.loadPictures,
+            reload: widget.pagePresenter.loadPictures,
           );
         } else if (state is PicturesPageStateLoadedSuccess) {
           return PicturesPageStateLoadedSuccessView(
-            presenter: widget.picturesPagePresenter,
+            pagePresenter: widget.pagePresenter,
             pictureViewModelList:
                 //  mockList,
                 state.pictureViewModelList,
-            onLoadAllPicturesList: widget.picturesPagePresenter.loadPictures,
-            onLoadPictureByDate: (date) => widget.picturesPagePresenter
+            onLoadAllPicturesList: widget.pagePresenter.loadPictures,
+            onLoadPictureByDate: (date) => widget.pagePresenter
                 .loadPictureByDate(context, date: date),
           );
         } else {
