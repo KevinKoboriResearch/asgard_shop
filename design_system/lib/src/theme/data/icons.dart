@@ -1,5 +1,5 @@
-import 'package:nasa_apod_design_system/src/helpers/named.dart';
 import 'package:equatable/equatable.dart';
+import 'package:nasa_apod_design_system/src/helpers/named.dart';
 
 class AppIconsData extends Equatable {
   const AppIconsData({
@@ -11,7 +11,7 @@ class AppIconsData extends Equatable {
 
   /// Icons have been exported with "Export Icon Font" Figma plugin.
   factory AppIconsData.regular() => AppIconsData(
-        fontFamily: 'asgard_icons',
+        fontFamily: 'apod_icons',
         fontPackage: 'nasa_apod_design_system',
         characters: AppIconCharactersData.regular(),
         sizes: AppIconSizesData.regular(),

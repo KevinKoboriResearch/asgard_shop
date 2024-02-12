@@ -6,9 +6,9 @@ Future<void> loadTestFonts() async {
   TestWidgetsFlutterBinding.ensureInitialized();
   await _loadFamily(
     'nasa_apod_design_system',
-    'asgard_icons',
+    'apod_icons',
     [
-      'fonts/asgard_icons.ttf',
+      'fonts/apod_icons.ttf',
     ],
   );
   await _loadFamily(

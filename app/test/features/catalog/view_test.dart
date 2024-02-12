@@ -9,7 +9,7 @@ void main() {
     BlocProvider(
       create: (context) => NotificationsOverviewBloc(),
       child: BlocProvider(
-        create: (context) => CollectionOverviewBloc(),
+        create: (context) => CollectionsOverviewBloc(),
         child: BlocProvider(
           create: (context) => AccountOverviewBloc(),
           child: PicturesPageStateLoadedSuccessViewMobileLayout(

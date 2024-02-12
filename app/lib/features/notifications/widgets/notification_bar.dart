@@ -28,11 +28,11 @@ class NotificationBar extends StatelessWidget {
                     title: state.lastNotification!.title,
                     description: state.lastNotification!.description,
                     icon: () {
-                      switch (state.lastNotification!.type) {
-                        case NotificationType.offer:
-                          return theme.icons.characters.tag;
-                      }
-                    }())
+                      return switch (state.lastNotification!.type) {
+                        NotificationType.offer => theme.icons.characters.vikoin,
+                      };
+                    }(),
+                  )
                 : null,
             child: child,
           );

@@ -10,25 +10,9 @@ class NotificationsOverviewStateLoadedData extends NotificationsOverviewState {
   factory NotificationsOverviewStateLoadedData.demo() =>
       NotificationsOverviewStateLoadedData(
         lastNotification: NotificationModel(
-          title: 'Save 50% on shields this week',
-          description: 'See the offer',
+          title: 'See the news',
+          description: 'NASA launches satellite that will study Earth’s “vital signs”',
           type: NotificationType.offer,
         ),
       );
 }
-
-// class NotificationModel {
-//   final String title;
-//   final String description;
-//   final NotificationType type;
-
-//   const NotificationModel({
-//     required this.type,
-//     required this.title,
-//     required this.description,
-//   });
-// }
-
-// enum NotificationType {
-//   offer,
-// }

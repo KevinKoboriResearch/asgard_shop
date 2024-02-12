@@ -135,7 +135,6 @@ class AppNotifiableBarLayout extends StatelessWidget {
 class _NotificationBody extends StatelessWidget {
   const _NotificationBody({
     required this.notification,
-    super.key,
     this.onClose,
   });
 
@@ -181,6 +180,7 @@ class _NotificationBody extends StatelessWidget {
           icon: theme.icons.characters.dismiss,
           onTap: onClose,
         ),
+        const AppGap.small(),
       ],
     );
   }

@@ -41,7 +41,7 @@ class AppThemeLibrary extends StatelessWidget {
         child: Builder(
           builder: (context) {
             return ThemeContainer(
-              title: 'Asgard Theme : ${formFactor.name} - ${colorMode.name}',
+              title: 'Apod Theme : ${formFactor.name} - ${colorMode.name}',
               sections: [
                 colors(context),
                 typography(context),

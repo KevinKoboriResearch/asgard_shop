@@ -6,7 +6,7 @@ class AppModule extends Module {
   void binds(Injector i) {
     i.addLazySingleton<NotificationsOverviewBloc>(
         () => NotificationsOverviewBloc());
-    i.addLazySingleton<CollectionOverviewBloc>(() => CollectionOverviewBloc());
+    i.addLazySingleton<CollectionsOverviewBloc>(() => CollectionsOverviewBloc());
     i.addLazySingleton<AccountOverviewBloc>(() => AccountOverviewBloc());
   }
 

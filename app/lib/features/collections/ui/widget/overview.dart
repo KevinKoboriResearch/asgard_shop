@@ -3,21 +3,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
-class CollectionOverview extends StatelessWidget {
-  final CollectionOverviewBloc collectionOverviewPresenter;
+class CollectionsOverview extends StatelessWidget {
+  final CollectionsOverviewBloc collectionsOverviewPresenter;
 
-  const CollectionOverview({
-    required this.collectionOverviewPresenter,
+  const CollectionsOverview({
+    required this.collectionsOverviewPresenter,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
-    return BlocBuilder<CollectionOverviewBloc, CollectionOverviewState>(
-      bloc: collectionOverviewPresenter,
+    return BlocBuilder<CollectionsOverviewBloc, CollectionsOverviewState>(
+      bloc: collectionsOverviewPresenter,
       builder: (context, state) {
-        if (state is CollectionOverviewStateLoadedData) {
+        if (state is CollectionsOverviewStateLoadedData) {
           final itemCount = state.collectionList.length;
           return Row(
             mainAxisSize: MainAxisSize.min,

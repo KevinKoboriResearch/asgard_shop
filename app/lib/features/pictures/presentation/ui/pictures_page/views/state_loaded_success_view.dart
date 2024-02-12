@@ -44,7 +44,7 @@ class PicturesPageStateLoadedSuccessView extends StatelessWidget {
 /// * [PicturesPageBloc]
 /// * [AccountOverviewBloc]
 /// * [NotificationsOverviewBloc]
-/// * [CollectionOverviewBloc]
+/// * [CollectionsOverviewBloc]
 class PicturesPageStateLoadedSuccessViewMobileLayout extends StatelessWidget {
   const PicturesPageStateLoadedSuccessViewMobileLayout({
     super.key,
@@ -71,7 +71,7 @@ class PicturesPageStateLoadedSuccessViewMobileLayout extends StatelessWidget {
       ),
       floatingBar: PicturesPageNavigationBar(
         accountOverviewPresenter: Modular.get<AccountOverviewBloc>(),
-        collectionOverviewPresenter: Modular.get<CollectionOverviewBloc>(),
+        collectionsOverviewPresenter: Modular.get<CollectionsOverviewBloc>(),
         notificationsOverviewPresenter:
             Modular.get<NotificationsOverviewBloc>(),
       ),

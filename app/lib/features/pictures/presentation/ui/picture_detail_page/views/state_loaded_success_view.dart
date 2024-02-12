@@ -27,7 +27,7 @@ class PictureDetailPageStateLoadedSuccessView extends StatelessWidget {
 /// State dependencies :
 /// * [AccountOverviewBloc]
 /// * [NotificationsOverviewBloc]
-/// * [CollectionOverviewBloc]
+/// * [CollectionsOverviewBloc]
 class PictureDetailLayout extends StatelessWidget {
   const PictureDetailLayout({
     super.key,
@@ -51,7 +51,7 @@ class PictureDetailLayout extends StatelessWidget {
       ),
       floatingBar: PictureDetailNavigationBar(
         accountOverviewPresenter: Modular.get<AccountOverviewBloc>(),
-        collectionOverviewPresenter: Modular.get<CollectionOverviewBloc>(),
+        collectionsOverviewPresenter: Modular.get<CollectionsOverviewBloc>(),
         notificationsOverviewPresenter:
             Modular.get<NotificationsOverviewBloc>(),
       ),

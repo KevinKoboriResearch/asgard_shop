@@ -1,4 +1,4 @@
 export 'account/account.dart';
-export 'collection/collection.dart';
+export 'collections/collections.dart';
 export 'notifications/notifications.dart';
 export 'pictures/pictures.dart';

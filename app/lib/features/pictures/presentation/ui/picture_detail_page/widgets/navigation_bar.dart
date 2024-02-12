@@ -1,5 +1,5 @@
 import 'package:nasa_apod_app/features/account/widget/avatar.dart';
-import 'package:nasa_apod_app/features/collection/ui/widget/overview.dart';
+import 'package:nasa_apod_app/features/collections/ui/widget/overview.dart';
 import 'package:nasa_apod_app/features/notifications/widgets/notification_bar.dart';
 import 'package:nasa_apod_app/features/pictures/presentation/ui/pictures_page/widgets/navigation_bar.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
@@ -7,12 +7,12 @@ import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class PictureDetailNavigationBar extends StatelessWidget {
   final AccountOverviewBloc accountOverviewPresenter;
-  final CollectionOverviewBloc collectionOverviewPresenter;
+  final CollectionsOverviewBloc collectionsOverviewPresenter;
   final NotificationsOverviewBloc notificationsOverviewPresenter;
 
   const PictureDetailNavigationBar({
     required this.accountOverviewPresenter,
-    required this.collectionOverviewPresenter,
+    required this.collectionsOverviewPresenter,
     required this.notificationsOverviewPresenter,
     super.key,
   });
@@ -29,8 +29,8 @@ class PictureDetailNavigationBar extends StatelessWidget {
         leading: CurrentUserAvatar(
           accountOverviewPresenter: accountOverviewPresenter,
         ),
-        summary: CollectionOverview(
-          collectionOverviewPresenter: collectionOverviewPresenter,
+        summary: CollectionsOverview(
+          collectionsOverviewPresenter: collectionsOverviewPresenter,
         ),
         body: CurrentUserAccountNavigationBody(
           accountOverviewPresenter: accountOverviewPresenter,
@@ -38,7 +38,7 @@ class PictureDetailNavigationBar extends StatelessWidget {
         action: AppButton(
           // TODO: NOW - CHANGE THIS NAME
           icon: theme.icons.characters.addPicture,
-          title: 'Add to collections',
+          title: 'Add to collectionss',
           onTap: () {},
         ),
       ),
