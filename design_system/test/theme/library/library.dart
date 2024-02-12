@@ -15,7 +15,9 @@ part 'typography.dart';
 
 class AppThemeLibrary extends StatelessWidget {
   const AppThemeLibrary({
-    required this.colorMode, required this.formFactor, super.key,
+    required this.colorMode,
+    required this.formFactor,
+    super.key,
   });
 
   final AppThemeColorMode colorMode;

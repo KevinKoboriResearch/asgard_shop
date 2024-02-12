@@ -1,4 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
@@ -23,9 +25,9 @@ class PictureDetailPageStateLoadedSuccessView extends StatelessWidget {
 }
 
 /// State dependencies :
-/// * [AccountState]
-/// * [NotificationsState]
-/// * [CartState]
+/// * [AccountOverviewBloc]
+/// * [NotificationsOverviewBloc]
+/// * [CollectionOverviewBloc]
 class PictureDetailLayout extends StatelessWidget {
   const PictureDetailLayout({
     super.key,
@@ -47,7 +49,12 @@ class PictureDetailLayout extends StatelessWidget {
             ..._buildBody(context, theme, pictureViewModel!),
         ],
       ),
-      floatingBar: const PictureDetailNavigationBar(),
+      floatingBar: PictureDetailNavigationBar(
+        accountOverviewPresenter: Modular.get<AccountOverviewBloc>(),
+        collectionOverviewPresenter: Modular.get<CollectionOverviewBloc>(),
+        notificationsOverviewPresenter:
+            Modular.get<NotificationsOverviewBloc>(),
+      ),
     );
   }
 

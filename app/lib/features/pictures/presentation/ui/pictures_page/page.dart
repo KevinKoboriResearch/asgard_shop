@@ -1,11 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 
 class PicturesPage extends StatefulWidget {
-  final PicturesPagePresenter pagePresenter;
+  final PicturesPagePresenter picturesPagePresenter;
+
   const PicturesPage({
-    required this.pagePresenter,
+    required this.picturesPagePresenter,
     super.key,
   });
 
@@ -16,33 +17,33 @@ class PicturesPage extends StatefulWidget {
 class _PicturesPageState extends State<PicturesPage> {
   @override
   void initState() {
-    widget.pagePresenter.loadPictures();
+    widget.picturesPagePresenter.loadPictures();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PicturesPageCubit, PicturesPageState>(
-      bloc: widget.pagePresenter as PicturesPageCubit,
+      bloc: widget.picturesPagePresenter as PicturesPageCubit,
       builder: (context, state) {
         if (state is PicturesPageStateLoading) {
           return PicturesPageStateLoadingView(
-            pagePresenter: widget.pagePresenter,
+            picturesPagePresenter: widget.picturesPagePresenter,
           );
         } else if (state is PicturesPageStateLoadedFailure) {
           return PicturesPageStateLoadedFailureView(
             failureMessage: state.failureMessage,
-            reload: widget.pagePresenter.loadPictures,
+            reload: widget.picturesPagePresenter.loadPictures,
           );
         } else if (state is PicturesPageStateLoadedSuccess) {
           return PicturesPageStateLoadedSuccessView(
-            pagePresenter: widget.pagePresenter,
+            picturesPagePresenter: widget.picturesPagePresenter,
             pictureViewModelList:
                 //  mockList,
                 state.pictureViewModelList,
-            onLoadAllPicturesList: widget.pagePresenter.loadPictures,
-            onLoadPictureByDate: (date) => widget.pagePresenter
-                .loadPictureByDate(context, date: date),
+            onLoadAllPicturesList: widget.picturesPagePresenter.loadPictures,
+            onLoadPictureByDate: (date) =>
+                widget.picturesPagePresenter.loadPictureByDate(context, date: date),
           );
         } else {
           return const SizedBox.shrink();

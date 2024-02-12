@@ -3,7 +3,8 @@ import 'package:tap_builder/tap_builder.dart';
 
 class AppActionButton extends StatelessWidget {
   const AppActionButton({
-    required this.icon, super.key,
+    required this.icon,
+    super.key,
     this.onTap,
   });
 
@@ -30,15 +31,18 @@ class AppActionButton extends StatelessWidget {
 
 class AppActionButtonLayout extends StatelessWidget {
   const AppActionButtonLayout.inactive({
-    required this.icon, super.key,
+    required this.icon,
+    super.key,
   }) : _state = AppButtonState.inactive;
 
   const AppActionButtonLayout.hovered({
-    required this.icon, super.key,
+    required this.icon,
+    super.key,
   }) : _state = AppButtonState.hovered;
 
   const AppActionButtonLayout.pressed({
-    required this.icon, super.key,
+    required this.icon,
+    super.key,
   }) : _state = AppButtonState.pressed;
 
   final String icon;

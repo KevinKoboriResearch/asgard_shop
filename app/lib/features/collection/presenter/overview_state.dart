@@ -7,7 +7,8 @@ class CollectionOverviewStateLoadedData extends CollectionOverviewState {
 
   CollectionOverviewStateLoadedData({required this.collectionList});
 
-  factory CollectionOverviewStateLoadedData.demo() => CollectionOverviewStateLoadedData(
+  factory CollectionOverviewStateLoadedData.demo() =>
+      CollectionOverviewStateLoadedData(
         collectionList: [
           CollectionItemModel(
             collectionName: 'Moon',

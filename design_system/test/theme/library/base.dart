@@ -4,7 +4,9 @@ import 'package:nasa_apod_design_system/src/helpers/named.dart';
 
 class ThemeContainer extends StatelessWidget {
   const ThemeContainer({
-    required this.title, required this.sections, super.key,
+    required this.title,
+    required this.sections,
+    super.key,
   });
   final String title;
   final List<ThemeSection> sections;
@@ -30,7 +32,9 @@ class ThemeContainer extends StatelessWidget {
 
 class ThemeSection extends StatelessWidget {
   const ThemeSection({
-    required this.title, required this.categories, super.key,
+    required this.title,
+    required this.categories,
+    super.key,
   });
 
   final String title;
@@ -54,7 +58,9 @@ class ThemeSection extends StatelessWidget {
 
 class ThemeCategory extends StatelessWidget {
   const ThemeCategory({
-    required this.title, required this.children, super.key,
+    required this.title,
+    required this.children,
+    super.key,
   });
 
   final String title;
@@ -79,7 +85,9 @@ class ThemeCategory extends StatelessWidget {
 
 class SpacedColumn extends StatelessWidget {
   const SpacedColumn({
-    required this.spaceBetween, required this.children, super.key,
+    required this.spaceBetween,
+    required this.children,
+    super.key,
   });
 
   final double spaceBetween;
@@ -106,7 +114,9 @@ class SpacedColumn extends StatelessWidget {
 
 class NamedCell<T> extends StatelessWidget {
   const NamedCell({
-    required this.value, required this.builder, super.key,
+    required this.value,
+    required this.builder,
+    super.key,
   });
 
   final Named<T> value;

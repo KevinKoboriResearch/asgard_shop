@@ -1,4 +1,3 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
 

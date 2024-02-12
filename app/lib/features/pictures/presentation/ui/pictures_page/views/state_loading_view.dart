@@ -1,12 +1,12 @@
-import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
+import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class PicturesPageStateLoadingView extends StatelessWidget {
-  final PicturesPagePresenter pagePresenter;
+  final PicturesPagePresenter picturesPagePresenter;
 
   const PicturesPageStateLoadingView({
-    required this.pagePresenter,
+    required this.picturesPagePresenter,
     super.key,
   });
 

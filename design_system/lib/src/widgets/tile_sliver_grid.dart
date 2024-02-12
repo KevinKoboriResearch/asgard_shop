@@ -4,7 +4,8 @@ import 'package:nasa_apod_design_system/src/theme/theme.dart';
 
 class AppTileSliverGrid extends StatelessWidget {
   const AppTileSliverGrid({
-    required this.children, super.key,
+    required this.children,
+    super.key,
     this.crossAxisCount = 2,
     this.padding,
   });

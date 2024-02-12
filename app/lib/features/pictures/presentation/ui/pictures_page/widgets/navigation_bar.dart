@@ -7,24 +7,41 @@ import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class PicturesPageNavigationBar extends StatelessWidget {
+  final AccountOverviewBloc accountOverviewPresenter;
+  final CollectionOverviewBloc collectionOverviewPresenter;
+  final NotificationsOverviewBloc notificationsOverviewPresenter;
+
   const PicturesPageNavigationBar({
+    required this.accountOverviewPresenter,
+    required this.collectionOverviewPresenter,
+    required this.notificationsOverviewPresenter,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return const NotificationBar(
+    return NotificationBar(
+      notificationsOverviewPresenter: notificationsOverviewPresenter,
       child: AppNavigationBar(
-        leading: CurrentUserAvatar(),
-        summary: CollectionOverview(),
-        body: CurrentUserAccount(),
+        leading: CurrentUserAvatar(
+          accountOverviewPresenter: accountOverviewPresenter,
+        ),
+        summary: CollectionOverview(
+          collectionOverviewPresenter: collectionOverviewPresenter,
+        ),
+        body: CurrentUserAccountNavigationBody(
+          accountOverviewPresenter: accountOverviewPresenter,
+        ),
       ),
     );
   }
 }
 
-class CurrentUserAccount extends StatelessWidget {
-  const CurrentUserAccount({
+class CurrentUserAccountNavigationBody extends StatelessWidget {
+  final AccountOverviewBloc accountOverviewPresenter;
+
+  const CurrentUserAccountNavigationBody({
+    required this.accountOverviewPresenter,
     super.key,
   });
 
@@ -33,6 +50,7 @@ class CurrentUserAccount extends StatelessWidget {
     final theme = AppTheme.of(context);
 
     return BlocBuilder<AccountOverviewBloc, AccountOverviewState>(
+      bloc: accountOverviewPresenter,
       builder: (context, state) {
         if (state is AccountOverviewStateLoadedData) {
           return Column(

@@ -21,7 +21,10 @@ import 'package:tap_builder/tap_builder.dart';
 class PictureTile extends StatefulWidget {
   const PictureTile({
     required this.title, // required this.image,
-    required this.imageUrl, required this.date, required this.onTap, super.key,
+    required this.imageUrl,
+    required this.date,
+    required this.onTap,
+    super.key,
     // this.aspectRatio = 1.0,
   });
 
@@ -105,12 +108,18 @@ enum ProductTileState {
 
 class ProductTileLayout extends StatelessWidget {
   const ProductTileLayout.idle({
-    required this.title, required this.image, required this.date, super.key,
+    required this.title,
+    required this.image,
+    required this.date,
+    super.key,
     this.aspectRatio = 1.0,
   }) : _state = ProductTileState.idle;
 
   const ProductTileLayout.hovered({
-    required this.title, required this.image, required this.date, super.key,
+    required this.title,
+    required this.image,
+    required this.date,
+    super.key,
     this.aspectRatio = 1.0,
   }) : _state = ProductTileState.hovered;
 

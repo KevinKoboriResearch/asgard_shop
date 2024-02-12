@@ -6,7 +6,8 @@ import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class AppScaffold extends StatelessWidget {
   const AppScaffold({
-    required this.body, super.key,
+    required this.body,
+    super.key,
     this.backgroundColor,
     this.backgroundImage,
     this.floatingBar,

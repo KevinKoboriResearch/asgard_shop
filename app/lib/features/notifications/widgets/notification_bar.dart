@@ -4,17 +4,20 @@ import 'package:nasa_apod_core/nasa_apod_core.dart';
 import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 class NotificationBar extends StatelessWidget {
+  final NotificationsOverviewBloc notificationsOverviewPresenter;
+  final Widget child;
+
   const NotificationBar({
+    required this.notificationsOverviewPresenter,
     super.key,
     required this.child,
   });
-
-  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     final theme = AppTheme.of(context);
     return BlocBuilder<NotificationsOverviewBloc, NotificationsOverviewState>(
+      bloc: notificationsOverviewPresenter,
       builder: (context, state) {
         if (state is NotificationsOverviewStateLoadedData) {
           return AppNotifiableBar(

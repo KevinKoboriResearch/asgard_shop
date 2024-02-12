@@ -1,23 +1,24 @@
-import 'package:nasa_apod_app/features/pictures/presentation/ui/pictures_page/views/state_loaded_success_view.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nasa_apod_app/nasa_apod_app.dart';
 
 import '../../base/view.dart';
 
 void main() {
   testAppView(
     'features/pictures',
-    MultiProvider(
-      providers: [
-        // Provider.value(value: NotificationsState.demo()),
-        // Provider.value(value: AccountState.demo()),
-        // Provider.value(value: CollectionState.demo()),
-        // Provider.value(value: CatalogState.demo()),
-      ],
-      child: CatalogMobileLayout(
-        pictureViewModelList: [],
-        onViewPictureDetail: (aspectRatio, pictureViewModel) {},
-        onLoadAllPicturesList: () {},
-        onLoadPictureByDate: (date) {},
+    BlocProvider(
+      create: (context) => NotificationsOverviewBloc(),
+      child: BlocProvider(
+        create: (context) => CollectionOverviewBloc(),
+        child: BlocProvider(
+          create: (context) => AccountOverviewBloc(),
+          child: PicturesPageStateLoadedSuccessViewMobileLayout(
+            pictureViewModelList: [],
+            onViewPictureDetail: (aspectRatio, pictureViewModel) {},
+            onLoadAllPicturesList: () {},
+            onLoadPictureByDate: (date) {},
+          ),
+        ),
       ),
     ),
   );

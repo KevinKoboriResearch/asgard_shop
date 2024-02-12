@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nasa_apod_app/nasa_apod_app.dart';
 import 'package:nasa_apod_core/nasa_apod_core.dart';
@@ -8,25 +9,24 @@ import 'package:nasa_apod_design_system/nasa_apod_design_system.dart';
 
 import '../widgets/header.dart';
 import '../widgets/navigation_bar.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 class PicturesPageStateLoadedSuccessView extends StatelessWidget {
   const PicturesPageStateLoadedSuccessView({
     super.key,
-    required this.pagePresenter,
+    required this.picturesPagePresenter,
     required this.pictureViewModelList,
     required this.onLoadAllPicturesList,
     required this.onLoadPictureByDate,
   });
 
-  final PicturesPagePresenter pagePresenter;
+  final PicturesPagePresenter picturesPagePresenter;
   final List<PictureViewModel> pictureViewModelList;
   final VoidCallback onLoadAllPicturesList;
   final ValueChanged<DateTime> onLoadPictureByDate;
 
   @override
   Widget build(BuildContext context) {
-    return CatalogMobileLayout(
+    return PicturesPageStateLoadedSuccessViewMobileLayout(
       pictureViewModelList: pictureViewModelList,
       onLoadAllPicturesList: onLoadAllPicturesList,
       onLoadPictureByDate: onLoadPictureByDate,
@@ -41,12 +41,12 @@ class PicturesPageStateLoadedSuccessView extends StatelessWidget {
 }
 
 /// State dependencies :
-/// * [CatalogState]
-/// * [AccountState]
-/// * [NotificationsState]
-/// * [CartState]
-class CatalogMobileLayout extends StatelessWidget {
-  const CatalogMobileLayout({
+/// * [PicturesPageBloc]
+/// * [AccountOverviewBloc]
+/// * [NotificationsOverviewBloc]
+/// * [CollectionOverviewBloc]
+class PicturesPageStateLoadedSuccessViewMobileLayout extends StatelessWidget {
+  const PicturesPageStateLoadedSuccessViewMobileLayout({
     super.key,
     required this.pictureViewModelList,
     required this.onViewPictureDetail,
@@ -62,14 +62,19 @@ class CatalogMobileLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      backgroundImage: CachedNetworkImageProvider(pictureViewModelList[1].url),
+      backgroundImage: CachedNetworkImageProvider(pictureViewModelList[0].url),
       body: _BodyWithProducts(
         pictureViewModelList: pictureViewModelList,
         onLoadAllPicturesList: onLoadAllPicturesList,
         onLoadPictureByDate: onLoadPictureByDate,
         onViewPictureDetail: onViewPictureDetail,
       ),
-      floatingBar: const PicturesPageNavigationBar(),
+      floatingBar: PicturesPageNavigationBar(
+        accountOverviewPresenter: Modular.get<AccountOverviewBloc>(),
+        collectionOverviewPresenter: Modular.get<CollectionOverviewBloc>(),
+        notificationsOverviewPresenter:
+            Modular.get<NotificationsOverviewBloc>(),
+      ),
     );
   }
 }

@@ -6,7 +6,8 @@ class CollectionOverviewBloc
     extends Bloc<CollectionOverviewEvent, CollectionOverviewState> {
   CollectionOverviewBloc() : super(CollectionOverviewStateLoadedData.demo()) {
     on<CollectionOverviewEventUpdateData>((event, emit) {
-      emit(CollectionOverviewStateLoadedData(collectionList: event.collectionList));
+      emit(CollectionOverviewStateLoadedData(
+          collectionList: event.collectionList));
     });
   }
 }

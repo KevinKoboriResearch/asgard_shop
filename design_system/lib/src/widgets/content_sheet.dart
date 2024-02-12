@@ -4,7 +4,8 @@ import 'package:sliver_tools/sliver_tools.dart';
 
 class AppContentSheet extends StatelessWidget {
   const AppContentSheet({
-    required this.children, super.key,
+    required this.children,
+    super.key,
   });
 
   final List<Widget> children;
